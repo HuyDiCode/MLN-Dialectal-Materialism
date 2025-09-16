@@ -7,7 +7,8 @@
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, visibility;
 }
 
 .floating-nav--visible {
@@ -29,8 +30,9 @@
   border: 2px solid #667eea;
   background: transparent;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0;
+  will-change: transform, background-color;
 }
 
 .nav-dot:hover {
@@ -60,7 +62,7 @@
 }
 
 .nav-dot__tooltip::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 100%;
   top: 50%;
@@ -92,23 +94,24 @@
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(20px);
-  transition: all 0.3s ease;
+  transform: translate3d(0, 20px, 0);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity, visibility;
 }
 
 .back-to-top--visible {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .back-to-top:hover {
-  transform: translateY(-2px);
+  transform: translate3d(0, -2px, 0);
   box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
 }
 
 .back-to-top:active {
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 /* Responsive Design */
@@ -116,14 +119,14 @@
   .floating-nav {
     right: 1rem;
   }
-  
+
   .back-to-top {
     bottom: 1rem;
     right: 1rem;
     width: 45px;
     height: 45px;
   }
-  
+
   .nav-dot__tooltip {
     display: none;
   }
@@ -133,7 +136,7 @@
   .floating-nav {
     right: 0.5rem;
   }
-  
+
   .back-to-top {
     bottom: 0.5rem;
     right: 0.5rem;

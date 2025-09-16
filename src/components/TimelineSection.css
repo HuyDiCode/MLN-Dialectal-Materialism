@@ -1,28 +1,27 @@
 /* Timeline Section Styles */
 .timeline-section {
   position: relative;
-  background: linear-gradient(180deg, 
-    #f7fafc 0%,
-    #edf2f7 50%,
-    #e2e8f0 100%);
+  background: linear-gradient(180deg, #f7fafc 0%, #edf2f7 50%, #e2e8f0 100%);
   padding: 6rem 0;
   overflow: hidden;
 }
 
 .timeline-section::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 2px;
   height: 100%;
-  background: linear-gradient(to bottom, 
+  background: linear-gradient(
+    to bottom,
     transparent 0%,
     #667eea 10%,
     #764ba2 50%,
     #667eea 90%,
-    transparent 100%);
+    transparent 100%
+  );
   z-index: 1;
 }
 
@@ -101,30 +100,30 @@
   .timeline-section {
     padding: 4rem 0;
   }
-  
+
   .timeline-section::before {
     left: 2rem;
     transform: none;
   }
-  
+
   .timeline-header {
     margin-bottom: 4rem;
     padding: 0 1rem;
   }
-  
+
   .timeline-footer {
     margin-top: 4rem;
   }
-  
+
   .timeline-conclusion {
     padding: 2rem 1.5rem;
     margin: 0 1rem;
   }
-  
+
   .timeline-conclusion h3 {
     font-size: 1.6rem;
   }
-  
+
   .timeline-conclusion p {
     font-size: 1rem;
   }
@@ -134,11 +133,11 @@
   .timeline-section {
     padding: 3rem 0;
   }
-  
+
   .timeline-header {
     margin-bottom: 3rem;
   }
-  
+
   .timeline-conclusion {
     padding: 1.5rem 1rem;
   }

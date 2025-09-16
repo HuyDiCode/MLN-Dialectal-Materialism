@@ -4,13 +4,14 @@
   margin: 8rem 0;
   min-height: 400px;
   opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s ease-out;
+  transform: translate3d(0, 50px, 0);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
 }
 
 .timeline-item--visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .timeline-item__container {
@@ -28,8 +29,9 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate3d(-50%, -50%, 0);
   z-index: 10;
+  will-change: transform;
 }
 
 .timeline-marker__dot {
@@ -42,8 +44,9 @@
   justify-content: center;
   box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
   border: 4px solid white;
-  transform: scale(0);
-  animation: popIn 0.6s ease-out 0.4s forwards;
+  transform: scale3d(0, 0, 1);
+  animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s forwards;
+  will-change: transform;
 }
 
 .timeline-marker__number {
@@ -91,13 +94,14 @@
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  transform: translateX(-50px);
+  transform: translate3d(-30px, 0, 0);
   opacity: 0;
-  transition: all 0.8s ease-out 0.2s;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+  will-change: transform, opacity;
 }
 
 .timeline-item--visible .timeline-text {
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
   opacity: 1;
 }
 
@@ -109,11 +113,11 @@
 .timeline-item--right .timeline-text {
   grid-area: text;
   margin-left: 2rem;
-  transform: translateX(50px);
+  transform: translate3d(30px, 0, 0);
 }
 
 .timeline-item--visible.timeline-item--right .timeline-text {
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .timeline-date {
@@ -125,9 +129,9 @@
   font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  transform: translateY(20px);
+  transform: translate3d(0, 15px, 0);
   opacity: 0;
-  animation: slideUp 0.6s ease-out 0.6s forwards;
+  animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
 }
 
 .timeline-title {
@@ -136,9 +140,9 @@
   color: #2d3748;
   margin-bottom: 1rem;
   line-height: 1.2;
-  transform: translateY(20px);
+  transform: translate3d(0, 15px, 0);
   opacity: 0;
-  animation: slideUp 0.6s ease-out 0.8s forwards;
+  animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
 }
 
 .timeline-description {
@@ -146,9 +150,9 @@
   line-height: 1.6;
   color: #4a5568;
   margin: 0;
-  transform: translateY(20px);
+  transform: translate3d(0, 15px, 0);
   opacity: 0;
-  animation: slideUp 0.6s ease-out 1s forwards;
+  animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
 }
 
 /* Image Content */
@@ -156,18 +160,19 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-  transform: translateY(50px) scale(0.9);
+  transform: translate3d(0, 30px, 0) scale3d(0.95, 0.95, 1);
   opacity: 0;
-  transition: all 0.8s ease-out 0.4s;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+  will-change: transform, opacity;
 }
 
 .timeline-item--visible .timeline-image {
-  transform: translateY(0) scale(1);
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
   opacity: 1;
 }
 
 .timeline-image:hover {
-  transform: translateY(-5px) scale(1.02);
+  transform: translate3d(0, -5px, 0) scale3d(1.02, 1.02, 1);
 }
 
 .timeline-item--left .timeline-image {
@@ -191,23 +196,23 @@
 /* Animations */
 @keyframes popIn {
   0% {
-    transform: scale(0);
+    transform: scale3d(0, 0, 1);
   }
-  80% {
-    transform: scale(1.1);
+  70% {
+    transform: scale3d(1.05, 1.05, 1);
   }
   100% {
-    transform: scale(1);
+    transform: scale3d(1, 1, 1);
   }
 }
 
 @keyframes slideUp {
   from {
-    transform: translateY(20px);
+    transform: translate3d(0, 15px, 0);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
     opacity: 1;
   }
 }
@@ -217,17 +222,17 @@
   .timeline-item__container {
     padding: 0 1rem;
   }
-  
+
   .timeline-content {
     gap: 2rem;
   }
-  
+
   .timeline-item--left .timeline-text,
   .timeline-item--right .timeline-text {
     margin-left: 1rem;
     margin-right: 1rem;
   }
-  
+
   .timeline-item--left .timeline-image,
   .timeline-item--right .timeline-image {
     margin-left: 1rem;
@@ -239,54 +244,52 @@
   .timeline-item {
     margin: 4rem 0;
   }
-  
+
   .timeline-content {
     grid-template-columns: 1fr;
     gap: 2rem;
-    grid-template-areas: 
+    grid-template-areas:
       "text"
       "image" !important;
   }
-  
+
   .timeline-item--left .timeline-text,
   .timeline-item--right .timeline-text,
   .timeline-item--left .timeline-image,
   .timeline-item--right .timeline-image {
     margin: 0;
-    transform: translateY(30px);
+    transform: translate3d(0, 20px, 0);
   }
   
   .timeline-item--visible .timeline-text,
   .timeline-item--visible .timeline-image {
-    transform: translateY(0);
-  }
-  
-  .timeline-marker {
+    transform: translate3d(0, 0, 0);
+  }  .timeline-marker {
     left: 2rem;
-    transform: translate(-50%, -50%);
+    transform: translate3d(-50%, -50%, 0);
   }
-  
+
   .timeline-marker__dot {
     width: 60px;
     height: 60px;
   }
-  
+
   .timeline-marker__number {
     font-size: 1.2rem;
   }
-  
+
   .timeline-text {
     padding: 1.5rem;
   }
-  
+
   .timeline-title {
     font-size: 1.8rem;
   }
-  
+
   .timeline-description {
     font-size: 1rem;
   }
-  
+
   .timeline-image img {
     height: 250px;
   }
@@ -296,15 +299,15 @@
   .timeline-item__container {
     padding: 0 0.5rem;
   }
-  
+
   .timeline-text {
     padding: 1rem;
   }
-  
+
   .timeline-title {
     font-size: 1.5rem;
   }
-  
+
   .timeline-image img {
     height: 200px;
   }
@@ -318,18 +321,18 @@
     transition: none;
     animation: none;
   }
-  
+
   .timeline-item {
     opacity: 1;
     transform: none;
   }
-  
+
   .timeline-text,
   .timeline-image {
     transform: none;
     opacity: 1;
   }
-  
+
   .timeline-date,
   .timeline-title,
   .timeline-description {

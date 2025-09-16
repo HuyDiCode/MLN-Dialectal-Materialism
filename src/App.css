@@ -3,6 +3,7 @@
   width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
+  transform: translate3d(0, 0, 0); /* Force GPU acceleration */
 }
 
 /* Global reset and base styles */
@@ -18,10 +19,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  transform: translate3d(0, 0, 0); /* Force GPU acceleration */
 }
 
 /* Remove default margins for headings and paragraphs */
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
 }
 

@@ -16,6 +16,7 @@ A modern, responsive React landing page featuring smooth parallax scrolling effe
 ## 🌟 Features
 
 ### ✨ Visual Design
+
 - **Full-height Hero Section** with centered title and smooth parallax effects
 - **Vertical Timeline** with 4 milestone components featuring alternating layouts
 - **Smooth Scroll Effects** powered by react-scroll-parallax
@@ -23,6 +24,7 @@ A modern, responsive React landing page featuring smooth parallax scrolling effe
 - **Responsive Design** optimized for all screen sizes
 
 ### 🎭 Interactive Elements
+
 - **Loading Screen** with animated progress indicator
 - **Floating Navigation** with scroll position indicators
 - **Back-to-Top Button** with parallax movement
@@ -30,6 +32,7 @@ A modern, responsive React landing page featuring smooth parallax scrolling effe
 - **Smooth Scrolling** between sections
 
 ### ♿ Accessibility & Performance
+
 - **Reduced Motion Support** for users with motion sensitivity
 - **Keyboard Navigation** with proper focus indicators
 - **Semantic HTML** structure for screen readers
@@ -39,23 +42,27 @@ A modern, responsive React landing page featuring smooth parallax scrolling effe
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 16.0 or higher
 - npm or yarn package manager
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd MLN-Dialectal-Materialism
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start development server**
+
    ```bash
    npm run dev
    ```
@@ -95,34 +102,44 @@ src/
 ## 🎨 Component Overview
 
 ### HeroSection
+
 Full-height landing section with:
+
 - Animated gradient background
 - Parallax title animation
 - Smooth scroll indicator
 - Responsive typography
 
 ### TimelineSection
+
 Vertical timeline featuring:
+
 - 4 milestone components
 - Alternating left/right layouts
 - Scroll-triggered visibility animations
 - Responsive grid system
 
 ### TimelineItem
+
 Individual timeline milestones with:
+
 - Parallax scrolling effects
 - Image lazy loading
 - Intersection Observer animations
 - Accessible content structure
 
 ### LoadingScreen
+
 Initial page load experience:
+
 - Animated progress bar
 - Logo animation
 - Smooth transition to main content
 
 ### FloatingNav
+
 Navigation enhancement:
+
 - Scroll position indicators
 - Section navigation dots
 - Back-to-top functionality
@@ -131,32 +148,38 @@ Navigation enhancement:
 ## 🔧 Customization
 
 ### Timeline Content
+
 Edit `src/data/timelineData.ts` to customize timeline milestones:
 
 ```typescript
 export const timelineData: TimelineMilestone[] = [
   {
-    id: '1',
-    title: 'Your Title',
-    description: 'Your description...',
-    date: '2024',
-    imageUrl: 'https://your-image-url.com',
-    imageAlt: 'Image description',
-    position: 'left' // or 'right'
+    id: "1",
+    title: "Your Title",
+    description: "Your description...",
+    date: "2024",
+    imageUrl: "https://your-image-url.com",
+    imageAlt: "Image description",
+    position: "left", // or 'right'
   },
   // Add more milestones...
 ];
 ```
 
 ### Styling
+
 - Global styles: `src/index.css`
 - Component styles: `src/components/*.css`
 - CSS custom properties for easy theme customization
 
 ### Parallax Effects
+
 Adjust parallax speeds in components:
+
 ```typescript
-<Parallax speed={-10}>  // Negative = slower, Positive = faster
+<Parallax speed={-10}>
+  {" "}
+  // Negative = slower, Positive = faster
   <YourContent />
 </Parallax>
 ```
@@ -178,11 +201,13 @@ Adjust parallax speeds in components:
 ## 📦 Dependencies
 
 ### Core
+
 - **React 19.1.1** - UI library
 - **TypeScript 5.8.3** - Type safety
 - **Vite 7.1.2** - Build tool
 
 ### Features
+
 - **react-scroll-parallax 3.4.5** - Parallax scrolling effects
 - **ESLint** - Code linting
 - **CSS3** - Modern styling with custom properties
@@ -199,15 +224,18 @@ npm run preview  # Preview production build
 ## 🎭 Performance Optimizations
 
 1. **Image Optimization**
+
    - Lazy loading with intersection observer
    - WebP format support
    - Responsive image sizing
 
 2. **Code Splitting**
+
    - Component-based splitting
    - Dynamic imports for heavy components
 
 3. **CSS Optimization**
+
    - CSS custom properties
    - Efficient selectors
    - Minimal specificity conflicts
@@ -231,10 +259,12 @@ npm run preview  # Preview production build
 ### Common Issues
 
 1. **Parallax not working**
+
    - Ensure ParallaxProvider wraps your app
    - Check for CSS overflow hidden on parent elements
 
 2. **Images not loading**
+
    - Verify image URLs are accessible
    - Check network connectivity
    - Enable browser dev tools for error messages
@@ -245,6 +275,7 @@ npm run preview  # Preview production build
    - Consider reducing parallax speeds
 
 ### Performance Issues
+
 - Use browser dev tools Performance tab
 - Check for memory leaks in animations
 - Optimize image sizes and formats
@@ -264,6 +295,7 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ## 📞 Support
 
 For questions or issues:
+
 - Open an issue on GitHub
 - Check the documentation
 - Review existing issues for solutions
@@ -276,27 +308,27 @@ You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-re
 
 ```js
 // eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+import reactX from "eslint-plugin-react-x";
+import reactDom from "eslint-plugin-react-dom";
 
 export default tseslint.config([
-  globalIgnores(['dist']),
+  globalIgnores(["dist"]),
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ["**/*.{ts,tsx}"],
     extends: [
       // Other configs...
       // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
+      reactX.configs["recommended-typescript"],
       // Enable lint rules for React DOM
       reactDom.configs.recommended,
     ],
     languageOptions: {
       parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
         tsconfigRootDir: import.meta.dirname,
       },
       // other options...
     },
   },
-])
+]);
 ```

@@ -6,7 +6,7 @@ export interface TimelineMilestone {
   date: string;
   imageUrl: string;
   imageAlt: string;
-  position: 'left' | 'right';
+  position: "left" | "right";
 }
 
 // Parallax effect configuration

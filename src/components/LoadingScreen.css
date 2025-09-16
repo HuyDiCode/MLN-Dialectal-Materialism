@@ -103,21 +103,21 @@
   .loading-content {
     padding: 1rem;
   }
-  
+
   .loading-logo {
     width: 80px;
     height: 80px;
     margin-bottom: 1.5rem;
   }
-  
+
   .loading-logo__text {
     font-size: 1.5rem;
   }
-  
+
   .loading-title {
     font-size: 1.5rem;
   }
-  
+
   .loading-subtitle {
     font-size: 0.9rem;
     margin-bottom: 2rem;
