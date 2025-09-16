@@ -1,0 +1,340 @@
+/* Timeline Item Styles */
+.timeline-item {
+  position: relative;
+  margin: 8rem 0;
+  min-height: 400px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.timeline-item--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-item__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Timeline Marker */
+.timeline-marker {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.timeline-marker__dot {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+  border: 4px solid white;
+  transform: scale(0);
+  animation: popIn 0.6s ease-out 0.4s forwards;
+}
+
+.timeline-marker__number {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.timeline-marker__line {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100px;
+  background: linear-gradient(to bottom, #667eea, transparent);
+}
+
+.timeline-item:last-child .timeline-marker__line {
+  display: none;
+}
+
+/* Content Layout */
+.timeline-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  width: 100%;
+  align-items: center;
+}
+
+.timeline-item--left .timeline-content {
+  grid-template-areas: "text image";
+}
+
+.timeline-item--right .timeline-content {
+  grid-template-areas: "image text";
+}
+
+/* Text Content */
+.timeline-text {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateX(-50px);
+  opacity: 0;
+  transition: all 0.8s ease-out 0.2s;
+}
+
+.timeline-item--visible .timeline-text {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.timeline-item--left .timeline-text {
+  grid-area: text;
+  margin-right: 2rem;
+}
+
+.timeline-item--right .timeline-text {
+  grid-area: text;
+  margin-left: 2rem;
+  transform: translateX(50px);
+}
+
+.timeline-item--visible.timeline-item--right .timeline-text {
+  transform: translateX(0);
+}
+
+.timeline-date {
+  display: inline-block;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUp 0.6s ease-out 0.6s forwards;
+}
+
+.timeline-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUp 0.6s ease-out 0.8s forwards;
+}
+
+.timeline-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #4a5568;
+  margin: 0;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUp 0.6s ease-out 1s forwards;
+}
+
+/* Image Content */
+.timeline-image {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  transform: translateY(50px) scale(0.9);
+  opacity: 0;
+  transition: all 0.8s ease-out 0.4s;
+}
+
+.timeline-item--visible .timeline-image {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.timeline-image:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+.timeline-item--left .timeline-image {
+  grid-area: image;
+  margin-left: 2rem;
+}
+
+.timeline-item--right .timeline-image {
+  grid-area: image;
+  margin-right: 2rem;
+}
+
+.timeline-image img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Animations */
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .timeline-item__container {
+    padding: 0 1rem;
+  }
+  
+  .timeline-content {
+    gap: 2rem;
+  }
+  
+  .timeline-item--left .timeline-text,
+  .timeline-item--right .timeline-text {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  
+  .timeline-item--left .timeline-image,
+  .timeline-item--right .timeline-image {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline-item {
+    margin: 4rem 0;
+  }
+  
+  .timeline-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    grid-template-areas: 
+      "text"
+      "image" !important;
+  }
+  
+  .timeline-item--left .timeline-text,
+  .timeline-item--right .timeline-text,
+  .timeline-item--left .timeline-image,
+  .timeline-item--right .timeline-image {
+    margin: 0;
+    transform: translateY(30px);
+  }
+  
+  .timeline-item--visible .timeline-text,
+  .timeline-item--visible .timeline-image {
+    transform: translateY(0);
+  }
+  
+  .timeline-marker {
+    left: 2rem;
+    transform: translate(-50%, -50%);
+  }
+  
+  .timeline-marker__dot {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .timeline-marker__number {
+    font-size: 1.2rem;
+  }
+  
+  .timeline-text {
+    padding: 1.5rem;
+  }
+  
+  .timeline-title {
+    font-size: 1.8rem;
+  }
+  
+  .timeline-description {
+    font-size: 1rem;
+  }
+  
+  .timeline-image img {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-item__container {
+    padding: 0 0.5rem;
+  }
+  
+  .timeline-text {
+    padding: 1rem;
+  }
+  
+  .timeline-title {
+    font-size: 1.5rem;
+  }
+  
+  .timeline-image img {
+    height: 200px;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .timeline-item,
+  .timeline-text,
+  .timeline-image {
+    transition: none;
+    animation: none;
+  }
+  
+  .timeline-item {
+    opacity: 1;
+    transform: none;
+  }
+  
+  .timeline-text,
+  .timeline-image {
+    transform: none;
+    opacity: 1;
+  }
+  
+  .timeline-date,
+  .timeline-title,
+  .timeline-description {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+}
