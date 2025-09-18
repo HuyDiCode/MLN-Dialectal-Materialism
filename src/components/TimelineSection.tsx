@@ -234,7 +234,7 @@ const TimelineSection: React.FC = () => {
       </div>
 
       {/* Timeline */}
-      <div ref={timelineRef} className='relative max-w-6xl mx-auto px-4 pb-20'>
+      <div ref={timelineRef} className='relative max-w-6xl mx-auto px-4 pb-64'>
         {/* Timeline Line */}
         <div className='timeline-line absolute left-1/2 transform -translate-x-1/2 w-1 bg-blue-300 h-full origin-top'></div>
 
