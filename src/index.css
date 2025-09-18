@@ -1,104 +1,17 @@
-/* Reset and Base Styles */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Marge";
+  src: url("./assets/Marge.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
-:root {
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  /* Color scheme for light theme */
-  color-scheme: light;
-  color: #2d3748;
-  background-color: #ffffff;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.font-marge {
+  font-family: "Marge", cursive !important;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  background: #ffffff;
-}
-
-#root {
-  width: 100%;
-  min-height: 100vh;
-}
-
-/* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-p {
-  line-height: 1.6;
-}
-
-/* Links */
-a {
-  color: #667eea;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: #764ba2;
-}
-
-/* Buttons */
-button {
-  border-radius: 8px;
-  border: none;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  background: transparent;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 2px solid #667eea;
-  outline-offset: 2px;
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* Hide scrollbar for better visual design */
-html {
-  scrollbar-width: thin;
-  scrollbar-color: #667eea #f1f1f1;
+@theme {
+  --font-marge: "Marge", cursive;
 }
