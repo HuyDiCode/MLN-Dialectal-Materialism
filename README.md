@@ -9,7 +9,7 @@ Currently, two official plugins are available:
 
 # Dialectical Materialism - React Landing Page
 
-A modern, responsive React landing page featuring smooth parallax scrolling effects and an engaging timeline presentation. Built with TypeScript, Vite, and react-scroll-parallax.
+A modern, responsive React landing page featuring smooth parallax scrolling effects and an engaging timeline presentation. Built with TypeScript, Vite, and GSAP.
 
 ![Preview](https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80)
 
@@ -19,7 +19,7 @@ A modern, responsive React landing page featuring smooth parallax scrolling effe
 
 - **Full-height Hero Section** with centered title and smooth parallax effects
 - **Vertical Timeline** with 4 milestone components featuring alternating layouts
-- **Smooth Scroll Effects** powered by react-scroll-parallax
+- **Smooth Scroll Effects** powered by GSAP and ScrollTrigger
 - **Modern UI/UX** with gradient backgrounds and glassmorphism effects
 - **Responsive Design** optimized for all screen sizes
 
@@ -27,7 +27,7 @@ A modern, responsive React landing page featuring smooth parallax scrolling effe
 
 - **Loading Screen** with animated progress indicator
 - **Floating Navigation** with scroll position indicators
-- **Back-to-Top Button** with parallax movement
+- **Back-to-Top Button** with GSAP parallax movement
 - **Scroll-triggered Animations** for timeline items
 - **Smooth Scrolling** between sections
 
@@ -106,7 +106,7 @@ src/
 Full-height landing section with:
 
 - Animated gradient background
-- Parallax title animation
+- GSAP-powered title animation
 - Smooth scroll indicator
 - Responsive typography
 

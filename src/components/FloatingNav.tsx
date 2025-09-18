@@ -1,43 +1,56 @@
-import { useState, useEffect } from "react";
-import { Parallax } from "react-scroll-parallax";
-import "./FloatingNav.css";
+import { useEffect, useRef } from "react";
+import { gsap } from "../hooks/useGSAP";
 
 const FloatingNav: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [activeSection, setActiveSection] = useState("hero");
+  const backToTopRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    let ticking = false;
-    
     const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const heroSection = document.querySelector(".hero-section");
-          const timelineSection = document.querySelector(".timeline-section");
-
-          if (heroSection && timelineSection) {
-            const heroBottom = heroSection.getBoundingClientRect().bottom;
-            const timelineTop = timelineSection.getBoundingClientRect().top;
-
-            if (heroBottom > window.innerHeight / 2) {
-              setActiveSection("hero");
-            } else if (timelineTop < window.innerHeight / 2) {
-              setActiveSection("timeline");
-            }
-          }
-
-          // Show/hide navigation based on scroll position
-          if (window.pageYOffset > 300) {
-            setIsVisible(true);
-          } else {
-            setIsVisible(false);
-          }
-          
-          ticking = false;
-        });
-        ticking = true;
-      }
+      // Placeholder for scroll handling
     };
+
+    // GSAP animation for back-to-top button parallax
+    if (backToTopRef.current) {
+      gsap.to(backToTopRef.current, {
+        y: 25,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "body",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1,
+        },
+      });
+
+      // Hover animation
+      const button = backToTopRef.current;
+      const handleMouseEnter = () => {
+        gsap.to(button, {
+          scale: 1.1,
+          duration: 0.3,
+          ease: "back.out(1.7)",
+        });
+      };
+
+      const handleMouseLeave = () => {
+        gsap.to(button, {
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      };
+
+      button.addEventListener("mouseenter", handleMouseEnter);
+      button.addEventListener("mouseleave", handleMouseLeave);
+
+      window.addEventListener("scroll", handleScroll, { passive: true });
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+        button.removeEventListener("mouseenter", handleMouseEnter);
+        button.removeEventListener("mouseleave", handleMouseLeave);
+      };
+    }
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -49,6 +62,8 @@ const FloatingNav: React.FC = () => {
     );
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+    } else if (sectionId === "hero") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -59,55 +74,55 @@ const FloatingNav: React.FC = () => {
   return (
     <>
       {/* Navigation Dots */}
-      <div
-        className={`floating-nav ${isVisible ? "floating-nav--visible" : ""}`}
-      >
-        <div className='nav-dots'>
+      <div className='fixed right-8 top-1/2 transform -translate-y-1/2 z-50'>
+        <div className='flex flex-col space-y-4'>
           <button
-            className={`nav-dot ${
-              activeSection === "hero" ? "nav-dot--active" : ""
-            }`}
             onClick={() => scrollToSection("hero")}
             aria-label='Go to hero section'
+            className='group relative'
           >
-            <span className='nav-dot__tooltip'>Hero</span>
+            <div className='w-3 h-3 bg-white/50 rounded-full transition-all duration-300 group-hover:bg-white group-hover:scale-125'></div>
+            <span className='absolute right-6 top-1/2 transform -translate-y-1/2 bg-black/80 text-white px-2 py-1 rounded text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap'>
+              Hero
+            </span>
           </button>
           <button
-            className={`nav-dot ${
-              activeSection === "timeline" ? "nav-dot--active" : ""
-            }`}
             onClick={() => scrollToSection("timeline")}
             aria-label='Go to timeline section'
+            className='group relative'
           >
-            <span className='nav-dot__tooltip'>Timeline</span>
+            <div className='w-3 h-3 bg-white/50 rounded-full transition-all duration-300 group-hover:bg-white group-hover:scale-125'></div>
+            <span className='absolute right-6 top-1/2 transform -translate-y-1/2 bg-black/80 text-white px-2 py-1 rounded text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap'>
+              Timeline
+            </span>
           </button>
         </div>
       </div>
 
       {/* Back to Top Button */}
-      <Parallax speed={-1}>
-        <button
-          className={`back-to-top ${isVisible ? "back-to-top--visible" : ""}`}
-          onClick={scrollToTop}
-          aria-label='Back to top'
+      <button
+        ref={backToTopRef}
+        onClick={scrollToTop}
+        aria-label='Back to top'
+        className='fixed bottom-8 right-8 w-12 h-12 bg-white/20 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 z-50'
+        style={{ willChange: "transform" }}
+      >
+        <svg
+          width='24'
+          height='24'
+          viewBox='0 0 24 24'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
         >
-          <svg
-            width='24'
-            height='24'
-            viewBox='0 0 24 24'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              d='M18 15L12 9L6 15'
-              stroke='currentColor'
-              strokeWidth='2'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            />
-          </svg>
-        </button>
-      </Parallax>
+          <path
+            d='M18 15L12 9L6 15'
+            stroke='currentColor'
+            strokeWidth='2'
+            strokeLinecap='round'
+            strokeLinejoin='round'
+          />
+        </svg>
+      </button>
     </>
   );
 };
