@@ -121,12 +121,12 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
                 onComplete: onLoadingComplete,
               });
             }
-          }, 800);
+          }, 2000);
           return 100;
         }
         return newProgress;
       });
-    }, 80);
+    }, 200);
 
     return () => clearInterval(interval);
   }, [onLoadingComplete]);
