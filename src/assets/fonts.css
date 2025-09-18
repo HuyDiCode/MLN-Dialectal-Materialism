@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "Marge";
+  src: url("./Marge.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-marge {
+  font-family: "Marge", "Georgia", serif !important;
+}
+
+h1.custom-font {
+  font-family: "Marge", "Georgia", serif !important;
+  font-weight: bold;
+}
