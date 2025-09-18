@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "../hooks/useGSAP";
 
 interface TimelineItem {
@@ -83,24 +83,41 @@ const TimelineSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     if (!sectionRef.current || !headerRef.current || !timelineRef.current)
       return;
 
-    // Header animation
+    // Mouse tracking for magnetic effects
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({
+        x: e.clientX,
+        y: e.clientY,
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    // Enhanced header animation with 3D effects
     gsap.fromTo(
       headerRef.current.children,
       {
-        y: 50,
+        y: 100,
         opacity: 0,
+        rotationX: 45,
+        transformPerspective: 1000,
+        scale: 0.8,
       },
       {
         y: 0,
         opacity: 1,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power2.out",
+        rotationX: 0,
+        scale: 1,
+        duration: 1.5,
+        stagger: 0.3,
+        ease: "power3.out",
         scrollTrigger: {
           trigger: headerRef.current,
           start: "top 80%",
@@ -110,85 +127,123 @@ const TimelineSection: React.FC = () => {
       }
     );
 
-    // Timeline items animations
+    // Enhanced timeline items animations with 3D effects
     const timelineItems =
       timelineRef.current.querySelectorAll(".timeline-item");
 
-    timelineItems.forEach((item) => {
+    timelineItems.forEach((item, itemIndex) => {
       const cards = item.querySelectorAll(".timeline-card");
 
-      // Stagger animation for cards within each timeline item
+      // Enhanced stagger animation with 3D transforms
       cards.forEach((card, cardIndex) => {
         gsap.fromTo(
           card,
           {
-            y: 100,
+            y: 150,
             opacity: 0,
-            scale: 0.9,
+            scale: 0.7,
+            rotationY: cardIndex % 2 === 0 ? -45 : 45,
+            transformPerspective: 1000,
           },
           {
             y: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.8,
-            delay: cardIndex * 0.2,
-            ease: "power2.out",
+            rotationY: 0,
+            duration: 1.2,
+            delay: cardIndex * 0.3,
+            ease: "power3.out",
             scrollTrigger: {
               trigger: item,
-              start: "top 80%",
-              end: "bottom 20%",
+              start: "top 85%",
+              end: "bottom 15%",
               toggleActions: "play reverse play reverse",
             },
           }
         );
 
-        // Slide away effect on further scroll with proper reset
+        // Enhanced slide away effect with rotation
         gsap.fromTo(
           card,
           {
             x: 0,
             opacity: 1,
             scale: 1,
+            rotationY: 0,
           },
           {
-            x: cardIndex % 2 === 0 ? -100 : 100,
-            opacity: 0.3,
-            scale: 0.95,
-            ease: "none",
+            x: cardIndex % 2 === 0 ? -150 : 150,
+            opacity: 0.2,
+            scale: 0.9,
+            rotationY: cardIndex % 2 === 0 ? -25 : 25,
+            ease: "power2.inOut",
             scrollTrigger: {
               trigger: item,
-              start: "bottom 60%",
-              end: "bottom 10%",
-              scrub: 1,
+              start: "bottom 70%",
+              end: "bottom 5%",
+              scrub: 2,
               toggleActions: "play none none reverse",
             },
           }
         );
+
+        // Floating animation for cards
+        gsap.to(card, {
+          y: -10,
+          duration: 2 + Math.random() * 2,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: itemIndex * 0.5 + cardIndex * 0.3,
+        });
       });
 
-      // Timeline dot animation
+      // Enhanced timeline dot animation with pulsing effect
       const dot = item.querySelector(".timeline-dot");
       if (dot) {
         gsap.fromTo(
           dot,
           {
             scale: 0,
+            rotation: 180,
           },
           {
             scale: 1,
-            duration: 0.5,
-            ease: "back.out(1.7)",
+            rotation: 0,
+            duration: 0.8,
+            ease: "back.out(2)",
             scrollTrigger: {
               trigger: item,
-              start: "top 70%",
+              start: "top 75%",
               toggleActions: "play reverse play reverse",
             },
           }
         );
+
+        // Continuous pulsing animation
+        gsap.to(dot, {
+          scale: 1.2,
+          duration: 1.5,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: itemIndex * 0.3,
+        });
+
+        // Glow effect
+        gsap.to(dot, {
+          boxShadow:
+            "0 0 20px rgba(59, 130, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.4)",
+          duration: 2,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: itemIndex * 0.2,
+        });
       }
     });
 
-    // Timeline line animation
+    // Enhanced timeline line animation with gradient effect
     const timelineLine = timelineRef.current.querySelector(".timeline-line");
     if (timelineLine) {
       gsap.fromTo(
@@ -209,10 +264,19 @@ const TimelineSection: React.FC = () => {
           },
         }
       );
+
+      // Animated gradient effect on timeline
+      gsap.to(timelineLine, {
+        backgroundPosition: "0% 100%",
+        duration: 3,
+        repeat: -1,
+        ease: "none",
+      });
     }
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
@@ -220,75 +284,223 @@ const TimelineSection: React.FC = () => {
     <div
       ref={sectionRef}
       id='timeline-section'
-      className='relative w-full bg-white'
+      className='relative w-full bg-gradient-to-br from-gray-50 via-white to-purple-50 overflow-hidden'
     >
+      {/* Dynamic Background Elements */}
+      <div className='absolute inset-0 overflow-hidden'>
+        <div
+          className='absolute w-96 h-96 rounded-full blur-3xl opacity-10 animate-pulse'
+          style={{
+            background: "linear-gradient(45deg, #9333ea, #3b82f6)",
+            top: "10%",
+            left: "5%",
+            transform: `translate(${mousePosition.x * 0.01}px, ${
+              mousePosition.y * 0.01
+            }px)`,
+            transition: "transform 0.3s ease-out",
+          }}
+        ></div>
+        <div
+          className='absolute w-72 h-72 rounded-full blur-3xl opacity-8 animate-pulse'
+          style={{
+            background: "linear-gradient(135deg, #ec4899, #8b5cf6)",
+            top: "60%",
+            right: "5%",
+            transform: `translate(${-mousePosition.x * 0.015}px, ${
+              -mousePosition.y * 0.015
+            }px)`,
+            transition: "transform 0.3s ease-out",
+            animationDelay: "2s",
+          }}
+        ></div>
+      </div>
+
       {/* Section Header */}
-      <div ref={headerRef} className='relative py-16 text-center'>
-        <h2 className='text-5xl md:text-6xl font-bold text-gray-900 mb-4 custom-font'>
-          Hành trình của một sinh viên
-        </h2>
-        <p className='text-xl text-gray-600 max-w-3xl mx-auto px-4'>
-          Trong giai đoạn chuyển tiếp - Từ băng ghế nhà trường đến thế giới việc
-          làm
-        </p>
+      <div ref={headerRef} className='relative py-20 text-center'>
+        <div className='relative'>
+          <h2 className='text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 custom-font relative'>
+            <span className='inline-block hover:scale-105 transition-transform duration-300'>
+              Hành trình của một
+            </span>
+            <span className='block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 hover:from-purple-400 hover:via-pink-500 hover:to-indigo-500 transition-all duration-500'>
+              sinh viên
+            </span>
+
+            {/* Decorative elements */}
+            <div className='absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full opacity-60 animate-bounce'></div>
+            <div className='absolute -bottom-4 -left-4 w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full opacity-40 animate-pulse delay-1000'></div>
+          </h2>
+
+          <p className='text-xl md:text-2xl lg:text-3xl text-gray-600 max-w-4xl mx-auto px-4 leading-relaxed'>
+            <span className='font-semibold text-purple-700'>
+              Trong giai đoạn chuyển tiếp
+            </span>
+            <span className='block mt-2'>
+              Từ băng ghế nhà trường đến thế giới việc làm
+            </span>
+          </p>
+
+          {/* Animated underline */}
+          <div className='mt-8 flex justify-center'>
+            <div className='w-32 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full animate-pulse'></div>
+          </div>
+        </div>
       </div>
 
       {/* Timeline */}
-      <div ref={timelineRef} className='relative max-w-6xl mx-auto px-4 pb-64'>
-        {/* Timeline Line */}
-        <div className='timeline-line absolute left-1/2 transform -translate-x-1/2 w-1 bg-blue-300 h-full origin-top'></div>
+      <div ref={timelineRef} className='relative max-w-7xl mx-auto px-4 pb-64'>
+        {/* Enhanced Timeline Line with gradient */}
+        <div
+          className='timeline-line absolute left-1/2 transform -translate-x-1/2 w-2 h-full origin-top rounded-full'
+          style={{
+            background:
+              "linear-gradient(180deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6)",
+            backgroundSize: "100% 200%",
+            animation: "gradient-shift 4s ease-in-out infinite",
+          }}
+        ></div>
 
-        {timelineData.map((item) => (
-          <div key={item.id} className='timeline-item relative mb-32'>
-            {/* Timeline Dot */}
-            <div className='timeline-dot absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-blue-500 rounded-full border-4 border-white shadow-lg z-10'></div>
+        {timelineData.map((item, index) => (
+          <div key={item.id} className='timeline-item relative mb-40'>
+            {/* Enhanced Timeline Dot */}
+            <div
+              className='timeline-dot absolute left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full border-4 border-white shadow-2xl z-20 cursor-pointer transition-all duration-300 hover:scale-125'
+              style={{
+                background: `linear-gradient(45deg, 
+                  ${
+                    index % 3 === 0
+                      ? "#3b82f6"
+                      : index % 3 === 1
+                      ? "#8b5cf6"
+                      : "#ec4899"
+                  }, 
+                  ${
+                    index % 3 === 0
+                      ? "#1d4ed8"
+                      : index % 3 === 1
+                      ? "#7c3aed"
+                      : "#db2777"
+                  })`,
+                boxShadow: `0 0 20px ${
+                  index % 3 === 0
+                    ? "rgba(59, 130, 246, 0.5)"
+                    : index % 3 === 1
+                    ? "rgba(139, 92, 246, 0.5)"
+                    : "rgba(236, 72, 153, 0.5)"
+                }`,
+              }}
+              onMouseEnter={() => setHoveredCard(item.id)}
+              onMouseLeave={() => setHoveredCard(null)}
+            ></div>
 
             {/* Content Container */}
             <div
-              className={`flex items-center ${
+              className={`flex items-start ${
                 item.isLeft ? "flex-row-reverse" : "flex-row"
-              } gap-8`}
+              } gap-12`}
             >
               {/* Image/Icon Side */}
               <div className='w-1/2 flex justify-center'>
-                <div className='timeline-card bg-white rounded-2xl shadow-lg p-8 border border-gray-200 hover:shadow-xl transition-shadow duration-300'>
-                  <div className='text-6xl mb-4 text-center'>{item.image}</div>
-                  <h3 className='text-2xl font-bold text-gray-900 text-center mb-2'>
-                    Mốc {item.id}
-                  </h3>
-                  <h4 className='text-lg font-semibold text-blue-600 text-center'>
-                    {item.title}
-                  </h4>
+                <div
+                  className={`timeline-card group bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-xl p-10 border-2 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 cursor-pointer ${
+                    hoveredCard === item.id
+                      ? "border-purple-400 shadow-purple-200"
+                      : "border-gray-200 hover:border-purple-300"
+                  }`}
+                  style={{
+                    backdropFilter: "blur(10px)",
+                    background:
+                      hoveredCard === item.id
+                        ? "linear-gradient(135deg, rgba(147, 51, 234, 0.05), rgba(79, 70, 229, 0.05))"
+                        : "linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(249, 250, 251, 0.9))",
+                  }}
+                  onMouseEnter={() => setHoveredCard(item.id)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                >
+                  <div className='text-8xl mb-6 text-center group-hover:scale-110 transition-transform duration-300'>
+                    {item.image}
+                  </div>
+                  <div className='relative'>
+                    <h3 className='text-3xl font-bold text-gray-900 text-center mb-3 group-hover:text-purple-700 transition-colors duration-300'>
+                      Mốc {item.id}
+                    </h3>
+                    <h4 className='text-xl font-semibold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent'>
+                      {item.title}
+                    </h4>
+
+                    {/* Floating particles around icon */}
+                    {hoveredCard === item.id && (
+                      <div className='absolute inset-0 pointer-events-none'>
+                        <div className='absolute top-2 right-2 w-2 h-2 bg-purple-400 rounded-full animate-ping'></div>
+                        <div className='absolute bottom-4 left-4 w-1 h-1 bg-blue-400 rounded-full animate-bounce delay-300'></div>
+                        <div className='absolute top-6 left-2 w-1 h-1 bg-pink-400 rounded-full animate-pulse delay-500'></div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
 
               {/* Content Side */}
-              <div className='w-1/2 space-y-6'>
+              <div className='w-1/2 space-y-8'>
                 {/* Main Description Card */}
-                <div className='timeline-card bg-white rounded-2xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300'>
-                  <div className='mb-4'>
+                <div
+                  className={`timeline-card group bg-gradient-to-br from-white to-blue-50 rounded-3xl shadow-xl p-8 border-2 transition-all duration-500 transform hover:scale-102 hover:-translate-y-1 ${
+                    hoveredCard === item.id
+                      ? "border-blue-400 shadow-blue-200"
+                      : "border-gray-200 hover:border-blue-300"
+                  }`}
+                  onMouseEnter={() => setHoveredCard(item.id)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                >
+                  <div className='relative'>
+                    <div className='absolute -top-2 -left-2 w-6 h-6 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full opacity-60 group-hover:animate-spin'></div>
+
                     {item.description.map((desc, idx) => (
-                      <div key={idx} className='flex items-start mb-3'>
-                        <span className='text-blue-500 mr-3 mt-1'>📌</span>
-                        <p className='text-gray-700 leading-relaxed'>{desc}</p>
+                      <div
+                        key={idx}
+                        className='flex items-start mb-4 group-hover:translate-x-1 transition-transform duration-300'
+                        style={{ transitionDelay: `${idx * 100}ms` }}
+                      >
+                        <span className='text-2xl mr-4 mt-1 group-hover:animate-bounce'>
+                          📌
+                        </span>
+                        <p className='text-gray-700 leading-relaxed text-lg group-hover:text-gray-800 transition-colors duration-300'>
+                          {desc}
+                        </p>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Category Analysis Card */}
-                <div className='timeline-card bg-blue-50 rounded-2xl shadow-lg p-6 border border-blue-200 hover:shadow-xl transition-shadow duration-300'>
-                  <div className='flex items-start mb-3'>
-                    <span className='text-blue-600 mr-3 mt-1'>🔎</span>
-                    <h5 className='font-semibold text-blue-800'>
-                      Phạm trù: {item.category}
-                    </h5>
-                  </div>
-                  <div className='flex items-start'>
-                    <span className='text-blue-600 mr-3 mt-1'>👉</span>
-                    <p className='text-blue-700 leading-relaxed'>
-                      {item.categoryDescription}
-                    </p>
+                <div
+                  className={`timeline-card group bg-gradient-to-br from-purple-50 to-indigo-50 rounded-3xl shadow-xl p-8 border-2 transition-all duration-500 transform hover:scale-102 hover:-translate-y-1 ${
+                    hoveredCard === item.id
+                      ? "border-purple-400 shadow-purple-200"
+                      : "border-purple-200 hover:border-purple-300"
+                  }`}
+                  onMouseEnter={() => setHoveredCard(item.id)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                >
+                  <div className='relative'>
+                    <div className='absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full opacity-60 group-hover:animate-pulse'></div>
+
+                    <div className='flex items-start mb-4 group-hover:translate-x-1 transition-transform duration-300'>
+                      <span className='text-2xl mr-4 mt-1 group-hover:animate-bounce'>
+                        🔎
+                      </span>
+                      <h5 className='font-bold text-xl text-purple-800 group-hover:text-purple-900 transition-colors duration-300'>
+                        Phạm trù: {item.category}
+                      </h5>
+                    </div>
+                    <div className='flex items-start group-hover:translate-x-1 transition-transform duration-300 delay-100'>
+                      <span className='text-2xl mr-4 mt-1 group-hover:animate-bounce delay-200'>
+                        👉
+                      </span>
+                      <p className='text-purple-700 leading-relaxed text-lg group-hover:text-purple-800 transition-colors duration-300'>
+                        {item.categoryDescription}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -296,39 +508,70 @@ const TimelineSection: React.FC = () => {
           </div>
         ))}
 
-        {/* Conclusion Section */}
-        <div className='relative mt-20'>
-          <div className='timeline-dot absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-green-500 rounded-full border-4 border-white shadow-lg z-10'></div>
+        {/* Enhanced Conclusion Section */}
+        <div className='relative mt-32'>
+          <div
+            className='timeline-dot absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full border-4 border-white shadow-2xl z-20'
+            style={{
+              background: "linear-gradient(45deg, #10b981, #059669)",
+              boxShadow:
+                "0 0 30px rgba(16, 185, 129, 0.6), 0 0 60px rgba(16, 185, 129, 0.3)",
+            }}
+          ></div>
 
-          <div className='bg-green-50 rounded-3xl shadow-xl p-8 border-2 border-green-200 mx-8'>
-            <div className='text-center mb-6'>
-              <h3 className='text-3xl font-bold text-green-800 mb-2'>
-                🎯 Bài học rút ra
+          <div className='group bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 rounded-3xl shadow-2xl p-12 border-2 border-green-200 mx-8 hover:border-green-300 transition-all duration-500 transform hover:scale-102 hover:-translate-y-2'>
+            <div className='text-center mb-10'>
+              <div className='inline-block p-4 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full mb-6 group-hover:animate-pulse'>
+                <span className='text-4xl'>🎯</span>
+              </div>
+              <h3 className='text-4xl md:text-5xl font-bold text-green-800 mb-4 group-hover:text-green-900 transition-colors duration-300'>
+                Bài học rút ra
               </h3>
+              <div className='w-24 h-1 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full mx-auto'></div>
             </div>
 
-            <div className='space-y-4 max-w-4xl mx-auto'>
-              <div className='bg-white rounded-xl p-4 shadow-md'>
-                <p className='text-gray-800 font-medium'>
-                  Mạng xã hội là cơ hội nhưng cũng là áp lực.
-                </p>
+            <div className='space-y-6 max-w-5xl mx-auto'>
+              <div className='group/item bg-white rounded-2xl p-6 shadow-lg border border-green-100 hover:border-green-300 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1'>
+                <div className='flex items-start'>
+                  <div className='flex-shrink-0 w-8 h-8 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mr-4 group-hover/item:animate-spin'>
+                    <span className='text-white text-sm font-bold'>1</span>
+                  </div>
+                  <p className='text-gray-800 font-semibold text-lg leading-relaxed group-hover/item:text-green-800 transition-colors duration-300'>
+                    Mạng xã hội là cơ hội nhưng cũng là áp lực - cần biết cân
+                    bằng và sử dụng một cách thông minh.
+                  </p>
+                </div>
               </div>
 
-              <div className='bg-white rounded-xl p-4 shadow-md'>
-                <p className='text-gray-800 font-medium'>
-                  Nếu chỉ chạy theo hiện tượng (trend, view, like) thì sẽ đánh
-                  mất giá trị thật.
-                </p>
+              <div className='group/item bg-white rounded-2xl p-6 shadow-lg border border-green-100 hover:border-green-300 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1'>
+                <div className='flex items-start'>
+                  <div className='flex-shrink-0 w-8 h-8 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full flex items-center justify-center mr-4 group-hover/item:animate-spin'>
+                    <span className='text-white text-sm font-bold'>2</span>
+                  </div>
+                  <p className='text-gray-800 font-semibold text-lg leading-relaxed group-hover/item:text-emerald-800 transition-colors duration-300'>
+                    Nếu chỉ chạy theo hiện tượng (trend, view, like) thì sẽ đánh
+                    mất giá trị thật và mục tiêu ban đầu.
+                  </p>
+                </div>
               </div>
 
-              <div className='bg-white rounded-xl p-4 shadow-md'>
-                <p className='text-gray-800 font-medium'>
-                  Sinh viên cần nhận thức đúng: mạng xã hội chỉ là công cụ, bản
-                  chất của việc tìm việc và xây dựng thương hiệu cá nhân vẫn là
-                  năng lực thực.
-                </p>
+              <div className='group/item bg-white rounded-2xl p-6 shadow-lg border border-green-100 hover:border-green-300 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1'>
+                <div className='flex items-start'>
+                  <div className='flex-shrink-0 w-8 h-8 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-full flex items-center justify-center mr-4 group-hover/item:animate-spin'>
+                    <span className='text-white text-sm font-bold'>3</span>
+                  </div>
+                  <p className='text-gray-800 font-semibold text-lg leading-relaxed group-hover/item:text-teal-800 transition-colors duration-300'>
+                    Sinh viên cần nhận thức đúng: mạng xã hội chỉ là công cụ,
+                    bản chất của việc tìm việc và xây dựng thương hiệu cá nhân
+                    vẫn là năng lực thực sự.
+                  </p>
+                </div>
               </div>
             </div>
+
+            {/* Floating decorative elements */}
+            <div className='absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full opacity-60 animate-bounce'></div>
+            <div className='absolute -bottom-4 -right-4 w-6 h-6 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full opacity-40 animate-pulse delay-1000'></div>
           </div>
         </div>
       </div>
