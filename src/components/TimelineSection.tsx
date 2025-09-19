@@ -42,26 +42,26 @@ const timelineData: TimelineItem[] = [
     id: 3,
     title: "Sau 3 tháng",
     description: [
-      "Đăng bài đều đặn nhưng vẫn ít người xem, nhân vật hoang mang khi thấy bạn bè khác viral.",
-      "Vừa nộp CV vừa thất vọng vì kết quả không như mong muốn.",
+      "Đăng bài đều đặn nhưng ít lượt xem, liên tục bị từ chối CV vì thiếu kinh nghiệm.",
+      "Hoang mang khi thấy bạn bè viral, có ý nghĩ muốn bỏ cuộc."
     ],
-    category: "Cái riêng - Cái chung",
+    category: "Thống nhất và đấu tranh của các mặt đối lập",
     categoryDescription:
-      "Nỗi lo cá nhân phản ánh thực trạng chung: sinh viên dễ bị áp lực khi so sánh mình với người khác trên mạng.",
-    image: "📱",
+      "Mâu thuẫn giữa nỗ lực cá nhân và cạnh tranh thị trường tạo động lực phát triển nhưng cũng gây áp lực tâm lý. Sinh viên thường coi ít view là thất bại cá nhân.",
+    image: "⚔️",
     isLeft: true,
   },
   {
     id: 4,
     title: "Sau nửa năm",
     description: [
-      "Nhân vật học cách chạy theo trend để tăng view.",
-      "Bài viết bắt đầu viral, nhưng nội dung kiến thức ngày càng ít.",
+      "Học cách chạy theo trend để tăng view, một số video đạt hàng nghìn lượt xem.",
+      "Nội dung không còn phản ánh năng lực thật, cảm thấy mệt mỏi vì xa rời mục tiêu ban đầu."
     ],
-    category: "Lượng - Chất",
+    category: "Nguyên nhân - Kết quả",
     categoryDescription:
-      "Lượng view tăng dần → dẫn đến thay đổi về chất: nhân vật tập trung vào 'trend' hơn là kiến thức thật. Hệ quả: dần xa rời mục tiêu ban đầu là thể hiện năng lực.",
-    image: "📈",
+      "Thành công lâu dài cần bắt nguồn từ tích lũy kiến thức, chạy theo trend chỉ mang lại kết quả ngắn hạn. Sinh viên dễ hiểu sai, coi 'viral' là kết quả duy nhất.",
+    image: "🎭",
     isLeft: false,
   },
   {
