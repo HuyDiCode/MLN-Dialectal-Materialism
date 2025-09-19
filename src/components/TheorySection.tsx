@@ -6,6 +6,7 @@ import InterconnectionAnimation from "./animations/InterconnectionAnimation";
 import WaterPhaseAnimation from "./animations/WaterPhaseAnimation";
 import TeamCompetitionAnimation from "./animations/TeamCompetitionAnimation";
 import SpiralDevelopmentAnimation from "./animations/SpiralDevelopmentAnimation";
+import DevelopmentAnimation from "./animations/DevelopmentAnimation";
 
 const TheorySection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -208,17 +209,18 @@ const TheorySection: React.FC = () => {
                     Sự phát triển
                   </h3>
                 </div>
-                <p className='text-gray-700 leading-relaxed mb-3'>
+                <p className='text-gray-700 leading-relaxed mb-4'>
                   Thế giới{" "}
                   <span className='font-semibold text-green-600'>
                     luôn thay đổi, phát triển
                   </span>
                   có quy luật, không ngẫu nhiên.
                 </p>
-                <div className='p-3 bg-green-50 rounded-lg'>
-                  <span className='text-sm text-green-700'>
-                    💡 Trẻ em → người lớn, xã hội nông nghiệp → công nghiệp
-                  </span>
+                <div className='bg-green-50 rounded-lg p-2 mb-3'>
+                  <DevelopmentAnimation />
+                </div>
+                <div className='text-center text-sm text-green-700 font-medium'>
+                  💡 Trẻ em → người lớn, xã hội nông nghiệp → công nghiệp
                 </div>
               </div>
             </div>
