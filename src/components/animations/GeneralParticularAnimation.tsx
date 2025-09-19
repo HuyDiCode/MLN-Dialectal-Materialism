@@ -267,9 +267,8 @@ const GeneralParticularAnimation: React.FC = () => {
             left: `${30 + i * 15}%`,
             width: `${20 - i * 2}px`,
             transformOrigin: "left",
-            scaleX: 0,
             opacity: 0,
-            transform: `rotate(${-30 + i * 10}deg)`,
+            transform: `scaleX(0) rotate(${-30 + i * 10}deg)`,
           }}
         />
       ))}
@@ -285,9 +284,8 @@ const GeneralParticularAnimation: React.FC = () => {
             left: `${20 + i * 15}%`,
             width: `${15 + i * 2}px`,
             transformOrigin: "left",
-            scaleX: 0,
             opacity: 0,
-            transform: `rotate(${20 - i * 8}deg)`,
+            transform: `scaleX(0) rotate(${20 - i * 8}deg)`,
           }}
         />
       ))}
@@ -303,9 +301,8 @@ const GeneralParticularAnimation: React.FC = () => {
             right: `${25 + i * 12}%`,
             width: `${18 - i * 2}px`,
             transformOrigin: "right",
-            scaleX: 0,
             opacity: 0,
-            transform: `rotate(${-25 + i * 12}deg)`,
+            transform: `scaleX(0) rotate(${-25 + i * 12}deg)`,
           }}
         />
       ))}
