@@ -1,0 +1,552 @@
+[
+    {
+        "id": 1,
+        "question": "Phép biện chứng duy vật là gì?",
+        "options": {
+            "A": "Cách nhìn thế giới luôn đứng yên và không thay đổi.",
+            "B": "Phương pháp xem ý thức quyết định vật chất.",
+            "C": "Cách nhìn thế giới như vật chất luôn vận động và phát triển qua mâu thuẫn.",
+            "D": "Lý thuyết chỉ tập trung vào siêu hình học."
+        },
+        "answer": "C"
+    },
+    {
+        "id": 2,
+        "question": "Nguyên tắc liên hệ phổ biến trong phép biện chứng duy vật nghĩa là gì?",
+        "options": {
+            "A": "Mọi sự vật tồn tại cô lập.",
+            "B": "Mọi sự vật đều liên kết với nhau.",
+            "C": "Chỉ có vật chất mà không có ý thức.",
+            "D": "Phát triển luôn đi theo đường thẳng."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 3,
+        "question": "Trong phép biện chứng duy vật, nguyên tắc phát triển nói gì?",
+        "options": {
+            "A": "Thế giới không bao giờ thay đổi.",
+            "B": "Sự vật luôn thay đổi và phát triển có quy luật.",
+            "C": "Chỉ có mâu thuẫn mà không có thống nhất.",
+            "D": "Vật chất không quyết định ý thức."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 4,
+        "question": "Quy luật lượng - chất trong phép biện chứng duy vật là gì?",
+        "options": {
+            "A": "Sự thay đổi số lượng dẫn đến thay đổi chất lượng khi đạt độ nhất định.",
+            "B": "Chất lượng luôn thay đổi mà không cần lượng.",
+            "C": "Lượng và chất không liên quan.",
+            "D": "Chỉ có chất mà không có lượng."
+        },
+        "answer": "A"
+    },
+    {
+        "id": 5,
+        "question": "Quy luật thống nhất và đấu tranh của các mặt đối lập nghĩa là gì?",
+        "options": {
+            "A": "Mọi sự vật không có mâu thuẫn.",
+            "B": "Mâu thuẫn bên trong thúc đẩy phát triển.",
+            "C": "Chỉ có thống nhất mà không có đấu tranh.",
+            "D": "Phát triển không cần mâu thuẫn."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 6,
+        "question": "Quy luật phủ định của phủ định trong phép biện chứng duy vật mô tả gì?",
+        "options": {
+            "A": "Phát triển đi theo đường thẳng.",
+            "B": "Phát triển theo hình xoắn ốc, loại bỏ cái cũ nhưng giữ cái tích cực.",
+            "C": "Không có phủ định nào.",
+            "D": "Phủ định hoàn toàn xóa bỏ mọi thứ."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 7,
+        "question": "Cái chung trong phạm trù cái chung - cái riêng là gì?",
+        "options": {
+            "A": "Đặc điểm riêng lẻ của một sự vật.",
+            "B": "Đặc điểm lặp lại ở nhiều sự vật.",
+            "C": "Không liên quan đến cái riêng.",
+            "D": "Chỉ tồn tại riêng biệt."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 8,
+        "question": "Cái riêng trong phạm trù cái chung - cái riêng là gì?",
+        "options": {
+            "A": "Đặc điểm phổ biến của nhiều vật.",
+            "B": "Đặc điểm cụ thể, riêng lẻ của sự vật.",
+            "C": "Không thể hiện cái chung.",
+            "D": "Luôn giống cái chung."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 9,
+        "question": "Nguyên nhân trong phạm trù nguyên nhân - kết quả là gì?",
+        "options": {
+            "A": "Hiện tượng sinh ra từ yếu tố khác.",
+            "B": "Yếu tố dẫn đến hiện tượng.",
+            "C": "Không liên quan đến kết quả.",
+            "D": "Luôn là kết quả của cái khác."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 10,
+        "question": "Kết quả trong phạm trù nguyên nhân - kết quả là gì?",
+        "options": {
+            "A": "Yếu tố gây ra hiện tượng.",
+            "B": "Hiện tượng được sinh ra từ nguyên nhân.",
+            "C": "Không thể hoán đổi với nguyên nhân.",
+            "D": "Luôn độc lập."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 11,
+        "question": "Bản chất trong phạm trù bản chất - hiện tượng là gì?",
+        "options": {
+            "A": "Những gì ta thấy bên ngoài.",
+            "B": "Cốt lõi sâu xa quyết định sự vật.",
+            "C": "Không phản ánh hiện tượng.",
+            "D": "Chỉ là biểu hiện bề mặt."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 12,
+        "question": "Hiện tượng trong phạm trù bản chất - hiện tượng là gì?",
+        "options": {
+            "A": "Cốt lõi bên trong.",
+            "B": "Những gì ta thấy, cảm nhận bên ngoài.",
+            "C": "Không liên quan đến bản chất.",
+            "D": "Luôn giống bản chất."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 13,
+        "question": "Trong hiện tượng sinh viên dùng mạng xã hội, áp lực gây tự ti thuộc phạm trù nào?",
+        "options": {
+            "A": "Nguyên nhân - kết quả.",
+            "B": "Bản chất - hiện tượng.",
+            "C": "Cái chung - cái riêng.",
+            "D": "Không thuộc phạm trù nào."
+        },
+        "answer": "A"
+    },
+    {
+        "id": 14,
+        "question": "Hồ sơ LinkedIn đẹp nhưng năng lực yếu thuộc phạm trù nào?",
+        "options": {
+            "A": "Cái chung - cái riêng.",
+            "B": "Bản chất - hiện tượng.",
+            "C": "Nguyên nhân - kết quả.",
+            "D": "Quy luật lượng - chất."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 15,
+        "question": "Sinh viên mới ra trường thiếu kinh nghiệm là cái gì trong phạm trù cái chung - cái riêng?",
+        "options": {
+            "A": "Cái riêng.",
+            "B": "Cái chung.",
+            "C": "Bản chất.",
+            "D": "Nguyên nhân."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 16,
+        "question": "Đăng bài TikTok đều đặn dẫn đến viral thuộc phạm trù nào?",
+        "options": {
+            "A": "Bản chất - hiện tượng.",
+            "B": "Nguyên nhân - kết quả.",
+            "C": "Cái chung - cái riêng.",
+            "D": "Quy luật phủ định."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 17,
+        "question": "Chạy theo trend trên TikTok để xây dựng thương hiệu cá nhân gây vấn đề gì?",
+        "options": {
+            "A": "Không gây vấn đề.",
+            "B": "Chạy theo hình thức, bỏ qua bản chất.",
+            "C": "Tăng tự tin ngay lập tức.",
+            "D": "Giảm áp lực."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 18,
+        "question": "Trong câu chuyện của Minh, thiếu kinh nghiệm ở trường là gì?",
+        "options": {
+            "A": "Cái chung.",
+            "B": "Cái riêng của Minh.",
+            "C": "Hiện tượng.",
+            "D": "Kết quả."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 19,
+        "question": "Tích lũy video trên TikTok dẫn đến thay đổi chất lượng (viral) thuộc quy luật nào?",
+        "options": {
+            "A": "Phủ định của phủ định.",
+            "B": "Lượng - chất.",
+            "C": "Thống nhất và đấu tranh.",
+            "D": "Bản chất - hiện tượng."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 20,
+        "question": "Mâu thuẫn giữa thời gian học và đăng bài trên mạng xã hội thuộc quy luật nào?",
+        "options": {
+            "A": "Lượng - chất.",
+            "B": "Thống nhất và đấu tranh của các mặt đối lập.",
+            "C": "Phủ định của phủ định.",
+            "D": "Nguyên nhân - kết quả."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 21,
+        "question": "Sinh viên vượt qua tự ti để thành công trên mạng xã hội thuộc quy luật nào?",
+        "options": {
+            "A": "Lượng - chất.",
+            "B": "Phủ định của phủ định.",
+            "C": "Thống nhất và đấu tranh.",
+            "D": "Cái chung - cái riêng."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 22,
+        "question": "Trong phép biện chứng, vật chất quyết định gì?",
+        "options": {
+            "A": "Không quyết định gì.",
+            "B": "Ý thức.",
+            "C": "Siêu hình.",
+            "D": "Duy tâm."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 23,
+        "question": "Mạng xã hội giúp sinh viên xây dựng thương hiệu cá nhân nhưng gây áp lực thuộc nguyên tắc nào?",
+        "options": {
+            "A": "Phát triển.",
+            "B": "Liên hệ phổ biến.",
+            "C": "Lượng - chất.",
+            "D": "Phủ định."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 24,
+        "question": "Video TikTok của Minh từ ít view đến viral là ví dụ của quy luật nào?",
+        "options": {
+            "A": "Thống nhất và đấu tranh.",
+            "B": "Lượng - chất.",
+            "C": "Phủ định của phủ định.",
+            "D": "Bản chất - hiện tượng."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 25,
+        "question": "Câu chuyện của Minh đại diện cho nhiều sinh viên thuộc phạm trù nào?",
+        "options": {
+            "A": "Nguyên nhân - kết quả.",
+            "B": "Cái chung - cái riêng.",
+            "C": "Bản chất - hiện tượng.",
+            "D": "Lượng - chất."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 26,
+        "question": "Tự học kỹ năng dẫn đến được mời phỏng vấn thuộc phạm trù nào?",
+        "options": {
+            "A": "Bản chất - hiện tượng.",
+            "B": "Nguyên nhân - kết quả.",
+            "C": "Cái chung - cái riêng.",
+            "D": "Quy luật phủ định."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 27,
+        "question": "Hồ sơ \"nổi\" trên LinkedIn nhưng năng lực thực yếu là gì?",
+        "options": {
+            "A": "Bản chất mạnh.",
+            "B": "Hiện tượng đẹp, bản chất yếu.",
+            "C": "Cái chung.",
+            "D": "Nguyên nhân."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 28,
+        "question": "Sinh viên chạy theo trend trên TikTok gây tự ti khi thất bại thuộc quy luật nào?",
+        "options": {
+            "A": "Lượng - chất.",
+            "B": "Thống nhất và đấu tranh.",
+            "C": "Phủ định của phủ định.",
+            "D": "Liên hệ phổ biến."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 29,
+        "question": "Từ sinh viên thiếu kinh nghiệm đến chuyên gia thành công là ví dụ của gì?",
+        "options": {
+            "A": "Quy luật lượng - chất.",
+            "B": "Phủ định của phủ định.",
+            "C": "Nguyên nhân - kết quả.",
+            "D": "Bản chất - hiện tượng."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 30,
+        "question": "Trong phép biện chứng, mâu thuẫn có vai trò gì?",
+        "options": {
+            "A": "Ngăn cản phát triển.",
+            "B": "Thúc đẩy phát triển.",
+            "C": "Không tồn tại.",
+            "D": "Chỉ là ảo tưởng."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 31,
+        "question": "Minh dùng TikTok để bán hàng online nhưng gặp áp lực thuộc nguyên tắc nào?",
+        "options": {
+            "A": "Phát triển.",
+            "B": "Liên hệ phổ biến.",
+            "C": "Lượng - chất.",
+            "D": "Bản chất."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 32,
+        "question": "Số lượng bài đăng tích lũy dẫn đến thay đổi (được mời việc) là gì?",
+        "options": {
+            "A": "Quy luật thống nhất.",
+            "B": "Lượng - chất.",
+            "C": "Phủ định.",
+            "D": "Cái riêng."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 33,
+        "question": "Câu chuyện cá nhân của Minh phản ánh xu hướng chung của sinh viên là gì?",
+        "options": {
+            "A": "Bản chất - hiện tượng.",
+            "B": "Cái chung - cái riêng.",
+            "C": "Nguyên nhân - kết quả.",
+            "D": "Quy luật phủ định."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 34,
+        "question": "Áp lực từ mạng xã hội dẫn đến tự ti là ví dụ của phạm trù nào?",
+        "options": {
+            "A": "Cái chung - cái riêng.",
+            "B": "Nguyên nhân - kết quả.",
+            "C": "Bản chất - hiện tượng.",
+            "D": "Lượng - chất."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 35,
+        "question": "Video viral trên TikTok nhưng nội dung kém chất lượng thuộc phạm trù nào?",
+        "options": {
+            "A": "Nguyên nhân - kết quả.",
+            "B": "Bản chất - hiện tượng.",
+            "C": "Cái chung - cái riêng.",
+            "D": "Thống nhất."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 36,
+        "question": "Sinh viên vượt qua thiếu kinh nghiệm bằng tự học thuộc quy luật nào?",
+        "options": {
+            "A": "Lượng - chất.",
+            "B": "Phủ định của phủ định.",
+            "C": "Thống nhất và đấu tranh.",
+            "D": "Liên hệ."
+        },
+        "answer": "C"
+    },
+    {
+        "id": 37,
+        "question": "Trong phép biện chứng, phát triển theo hình xoắn ốc thuộc quy luật nào?",
+        "options": {
+            "A": "Lượng - chất.",
+            "B": "Thống nhất và đấu tranh.",
+            "C": "Phủ định của phủ định.",
+            "D": "Bản chất - hiện tượng."
+        },
+        "answer": "C"
+    },
+    {
+        "id": 38,
+        "question": "Minh cảm thấy hoang mang khi so sánh với bạn bè trên mạng thuộc vấn đề gì?",
+        "options": {
+            "A": "Không có vấn đề.",
+            "B": "Vấn đề nhận thức trong cái chung - cái riêng.",
+            "C": "Bản chất mạnh.",
+            "D": "Kết quả tốt."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 39,
+        "question": "Tự học dẫn đến thành công bền vững thuộc phạm trù nào?",
+        "options": {
+            "A": "Hiện tượng - bản chất.",
+            "B": "Nguyên nhân - kết quả.",
+            "C": "Cái riêng - cái chung.",
+            "D": "Lượng - chất."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 40,
+        "question": "Hồ sơ đẹp trên mạng nhưng thất bại phỏng vấn là gì?",
+        "options": {
+            "A": "Bản chất - hiện tượng.",
+            "B": "Nguyên nhân - kết quả.",
+            "C": "Cái chung - cái riêng.",
+            "D": "Quy luật phủ định."
+        },
+        "answer": "A"
+    },
+    {
+        "id": 41,
+        "question": "Quy luật biện chứng giúp sinh viên hiểu gì về mạng xã hội?",
+        "options": {
+            "A": "Không giúp gì.",
+            "B": "Là công cụ phát triển nhưng có mâu thuẫn.",
+            "C": "Chỉ là giải trí.",
+            "D": "Luôn gây hại."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 42,
+        "question": "Minh từ thất bại đến thành công trên TikTok thuộc quy luật nào?",
+        "options": {
+            "A": "Lượng - chất.",
+            "B": "Phủ định của phủ định.",
+            "C": "Thống nhất.",
+            "D": "Bản chất."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 43,
+        "question": "Xu hướng bán hàng online trên TikTok là cái gì?",
+        "options": {
+            "A": "Cái riêng.",
+            "B": "Cái chung của sinh viên.",
+            "C": "Hiện tượng.",
+            "D": "Nguyên nhân."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 44,
+        "question": "Đăng bài đều dẫn đến tăng follower thuộc phạm trù nào?",
+        "options": {
+            "A": "Bản chất - hiện tượng.",
+            "B": "Nguyên nhân - kết quả.",
+            "C": "Cái chung - cái riêng.",
+            "D": "Phủ định."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 45,
+        "question": "Thương hiệu cá nhân \"nổi\" nhưng thiếu kỹ năng thực là gì?",
+        "options": {
+            "A": "Bản chất mạnh.",
+            "B": "Hiện tượng nổi, bản chất thiếu.",
+            "C": "Cái chung.",
+            "D": "Kết quả."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 46,
+        "question": "Mâu thuẫn giữa học tập và dùng mạng xã hội thuộc quy luật nào?",
+        "options": {
+            "A": "Lượng - chất.",
+            "B": "Thống nhất và đấu tranh.",
+            "C": "Phủ định.",
+            "D": "Liên hệ."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 47,
+        "question": "Sinh viên cần tập trung vào gì để thành công trên mạng xã hội?",
+        "options": {
+            "A": "Chỉ trend.",
+            "B": "Bản chất năng lực thực.",
+            "C": "Không cần gì.",
+            "D": "Chỉ lượt like."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 48,
+        "question": "Câu chuyện Minh giúp hiểu gì về hiện tượng?",
+        "options": {
+            "A": "Không giúp.",
+            "B": "Áp dụng phạm trù để phân tích áp lực.",
+            "C": "Chỉ là ví dụ vui.",
+            "D": "Không liên quan triết học."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 49,
+        "question": "Tích lũy kinh nghiệm dẫn đến việc làm ổn định thuộc quy luật nào?",
+        "options": {
+            "A": "Phủ định.",
+            "B": "Lượng - chất.",
+            "C": "Thống nhất.",
+            "D": "Bản chất."
+        },
+        "answer": "B"
+    },
+    {
+        "id": 50,
+        "question": "Phép biện chứng duy vật giúp sinh viên tránh gì khi dùng mạng xã hội?",
+        "options": {
+            "A": "Không tránh gì.",
+            "B": "Chạy theo hình thức và tự ti.",
+            "C": "Sử dụng mạng xã hội.",
+            "D": "Xây dựng thương hiệu."
+        },
+        "answer": "B"
+    }
+]
