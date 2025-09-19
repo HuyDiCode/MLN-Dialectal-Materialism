@@ -35,16 +35,22 @@ const SpiralDevelopmentAnimation: React.FC = () => {
               scale: 0,
               opacity: 0,
               rotationZ: 0,
+              rotationX: 0,
+              rotationY: 0,
               x: 0,
               y: 0,
+              z: -50,
             },
             {
               scale: 1,
               opacity: 1,
               x: x,
               y: -y, // Negative for upward spiral
-              duration: 2,
-              ease: "back.out(1.7)",
+              z: index * 10,
+              rotationX: index * 5,
+              rotationY: index * 8,
+              duration: 2.5,
+              ease: "elastic.out(1, 0.6)",
               delay: index * 1.5,
             }
           )
@@ -117,7 +123,8 @@ const SpiralDevelopmentAnimation: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className='relative w-full h-96 flex items-center justify-center perspective-1000 overflow-hidden'
+      className='relative w-full h-96 flex items-center justify-center overflow-hidden'
+      style={{ perspective: "1600px", perspectiveOrigin: "center center" }}
     >
       {/* Background spiral pattern */}
       <div className='absolute inset-0'>

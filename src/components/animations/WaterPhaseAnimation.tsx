@@ -193,10 +193,19 @@ const WaterPhaseAnimation: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className='relative w-full h-80 flex items-center justify-center perspective-1000'
+      className='relative w-full h-80 flex items-center justify-center'
+      style={{ perspective: "1500px", perspectiveOrigin: "center center" }}
     >
       {/* Container/Beaker */}
-      <div className='relative w-32 h-48 border-4 border-gray-400 border-t-0 rounded-b-3xl bg-gradient-to-t from-gray-200 to-transparent shadow-2xl'>
+      <div
+        className='relative w-32 h-48 border-4 border-gray-400 border-t-0 rounded-b-3xl bg-gradient-to-t from-gray-200 to-transparent transform-gpu preserve-3d'
+        style={{
+          boxShadow:
+            "0 30px 60px rgba(0,0,0,0.3), inset 0 5px 15px rgba(255,255,255,0.2)",
+          filter: "drop-shadow(0 15px 25px rgba(0,0,0,0.15))",
+          transformStyle: "preserve-3d",
+        }}
+      >
         {/* Water */}
         <div
           ref={waterRef}
@@ -204,6 +213,10 @@ const WaterPhaseAnimation: React.FC = () => {
           style={{
             background: "linear-gradient(to top, #1e40af, #3b82f6, #60a5fa)",
             transformOrigin: "bottom",
+            boxShadow:
+              "inset 0 5px 15px rgba(255,255,255,0.2), inset 0 -5px 15px rgba(0,0,0,0.1)",
+            filter: "drop-shadow(0 5px 10px rgba(30, 64, 175, 0.3))",
+            transformStyle: "preserve-3d",
           }}
         >
           {/* Water surface ripples */}

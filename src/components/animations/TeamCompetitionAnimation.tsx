@@ -120,7 +120,8 @@ const TeamCompetitionAnimation: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className='relative w-full h-80 flex items-center justify-center perspective-1000 overflow-hidden'
+      className='relative w-full h-80 flex items-center justify-center overflow-hidden'
+      style={{ perspective: "1400px", perspectiveOrigin: "center center" }}
     >
       {/* Soccer Field Background */}
       <div className='absolute inset-0 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl shadow-2xl'>

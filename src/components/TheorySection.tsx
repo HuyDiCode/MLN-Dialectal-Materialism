@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "../hooks/useGSAP";
+import "../assets/animations-3d.css";
 import BrainConsciousnessAnimation from "./animations/BrainConsciousnessAnimation";
 import SeedGrowthAnimation from "./animations/SeedGrowthAnimation";
 import InterconnectionAnimation from "./animations/InterconnectionAnimation";
@@ -131,7 +132,7 @@ const TheorySection: React.FC = () => {
                   </span>
                   . Vật chất sinh ra trước, ý thức được hình thành sau.
                 </p>
-                <div className='bg-purple-50 rounded-lg p-2 mb-3'>
+                <div className='bg-purple-50 rounded-lg p-2 mb-3 perspective-container shadow-3d transform-3d'>
                   <BrainConsciousnessAnimation />
                 </div>
                 <div className='text-center text-sm text-purple-700 font-medium'>
@@ -153,7 +154,7 @@ const TheorySection: React.FC = () => {
                   </span>
                   , thay đổi và đầy mâu thuẫn.
                 </p>
-                <div className='bg-blue-50 rounded-lg p-2 mb-3'>
+                <div className='bg-blue-50 rounded-lg p-2 mb-3 perspective-container-wide shadow-3d transform-3d'>
                   <SeedGrowthAnimation />
                 </div>
                 <div className='text-center text-sm text-blue-700 font-medium'>
@@ -194,7 +195,7 @@ const TheorySection: React.FC = () => {
                   <span className='font-semibold text-blue-600'>liên kết</span>{" "}
                   với nhau, không có gì tồn tại cô lập.
                 </p>
-                <div className='bg-blue-50 rounded-lg p-2 mb-3'>
+                <div className='bg-blue-50 rounded-lg p-2 mb-3 perspective-container shadow-3d transform-3d ambient-light'>
                   <InterconnectionAnimation />
                 </div>
                 <div className='text-center text-sm text-blue-700 font-medium'>
@@ -216,7 +217,7 @@ const TheorySection: React.FC = () => {
                   </span>
                   có quy luật, không ngẫu nhiên.
                 </p>
-                <div className='bg-green-50 rounded-lg p-2 mb-3'>
+                <div className='bg-green-50 rounded-lg p-2 mb-3 perspective-container-wide shadow-3d transform-3d'>
                   <DevelopmentAnimation />
                 </div>
                 <div className='text-center text-sm text-green-700 font-medium'>
@@ -244,7 +245,7 @@ const TheorySection: React.FC = () => {
                   đến mức nhất định → thay đổi{" "}
                   <span className='font-semibold text-orange-600'>chất</span>
                 </p>
-                <div className='bg-orange-50 rounded-lg p-2 mb-3'>
+                <div className='bg-orange-50 rounded-lg p-2 mb-3 perspective-container shadow-deep transform-3d'>
                   <WaterPhaseAnimation />
                 </div>
                 <div className='text-center text-sm text-orange-700 font-medium'>
@@ -266,7 +267,7 @@ const TheorySection: React.FC = () => {
                   </span>
                   . Sự đấu tranh thúc đẩy phát triển.
                 </p>
-                <div className='bg-red-50 rounded-lg p-2 mb-3'>
+                <div className='bg-red-50 rounded-lg p-2 mb-3 perspective-container shadow-3d transform-3d ambient-light'>
                   <TeamCompetitionAnimation />
                 </div>
                 <div className='text-center text-sm text-red-700 font-medium'>
@@ -286,7 +287,7 @@ const TheorySection: React.FC = () => {
                   <span className='font-semibold text-purple-600'>xoắn ốc</span>
                   : loại bỏ cái cũ, giữ cái tích cực.
                 </p>
-                <div className='bg-purple-50 rounded-lg p-2 mb-3'>
+                <div className='bg-purple-50 rounded-lg p-2 mb-3 perspective-container-wide shadow-deep transform-3d ambient-light'>
                   <SpiralDevelopmentAnimation />
                 </div>
                 <div className='text-center text-sm text-purple-700 font-medium'>

@@ -24,25 +24,31 @@ const DevelopmentAnimation: React.FC = () => {
       .to(humanStagesRef.current[0], {
         scale: 1,
         opacity: 1,
-        duration: 1.5,
-        ease: "back.out(1.7)",
+        rotationY: 5,
+        z: 10,
+        duration: 2,
+        ease: "elastic.out(1, 0.6)",
       })
       .to(humanStagesRef.current[0], {
-        y: -10,
-        duration: 1,
+        y: -12,
+        rotationZ: 3,
+        duration: 1.2,
         repeat: 2,
         yoyo: true,
-        ease: "power2.inOut",
+        ease: "sine.inOut",
       });
 
     // Phase 2: Growth transition
     masterTL
       .to(transitionRef.current, {
         opacity: 1,
-        scale: 1.2,
+        scale: 1.3,
         rotationZ: 180,
-        duration: 1,
-        ease: "power2.inOut",
+        rotationX: 15,
+        rotationY: 10,
+        z: 20,
+        duration: 1.5,
+        ease: "back.out(1.7)",
       })
       .to(
         humanStagesRef.current[0],
@@ -159,7 +165,8 @@ const DevelopmentAnimation: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className='relative w-full h-80 flex items-center justify-center perspective-1000 overflow-hidden'
+      className='relative w-full h-80 flex items-center justify-center overflow-hidden'
+      style={{ perspective: "1500px", perspectiveOrigin: "center center" }}
     >
       {/* Timeline Background */}
       <div className='absolute bottom-4 left-4 right-4 h-1 bg-gray-300 rounded-full'>

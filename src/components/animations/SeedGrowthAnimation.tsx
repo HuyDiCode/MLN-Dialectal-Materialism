@@ -19,13 +19,18 @@ const SeedGrowthAnimation: React.FC = () => {
       .set([stemRef.current, ...leavesRef.current, ...rootsRef.current], {
         scale: 0,
         opacity: 0,
+        rotationX: 0,
+        rotationY: 0,
+        z: 0,
       })
       .to(seedRef.current, {
-        scale: 1.2,
-        rotationX: 10,
-        rotationY: 10,
-        duration: 2,
-        ease: "power2.inOut",
+        scale: 1.25,
+        rotationX: 15,
+        rotationY: 12,
+        rotationZ: 3,
+        z: 5,
+        duration: 2.5,
+        ease: "elastic.out(1, 0.5)",
       })
       .to(
         conflictRef.current,
@@ -131,10 +136,19 @@ const SeedGrowthAnimation: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className='relative w-full h-80 flex items-end justify-center perspective-1000 overflow-hidden'
+      className='relative w-full h-80 flex items-end justify-center overflow-hidden'
+      style={{ perspective: "1400px", perspectiveOrigin: "center 70%" }}
     >
       {/* Soil/Ground */}
-      <div className='absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-amber-900 via-amber-800 to-amber-700 rounded-t-3xl'>
+      <div
+        className='absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-amber-900 via-amber-800 to-amber-700 rounded-t-3xl transform-gpu preserve-3d'
+        style={{
+          boxShadow:
+            "0 -10px 30px rgba(0,0,0,0.2), inset 0 5px 15px rgba(255,255,255,0.1)",
+          filter: "drop-shadow(0 -5px 15px rgba(0,0,0,0.1))",
+          transformStyle: "preserve-3d",
+        }}
+      >
         {/* Soil particles */}
         {Array.from({ length: 20 }).map((_, i) => (
           <div

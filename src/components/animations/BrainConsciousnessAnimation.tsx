@@ -11,49 +11,59 @@ const BrainConsciousnessAnimation: React.FC = () => {
     if (!containerRef.current || !brainRef.current || !thoughtsRef.current)
       return;
 
-    const tl = gsap.timeline({ repeat: -1, yoyo: true });
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
 
-    // Brain pulsing animation
+    // Brain pulsing animation with 3D rotation
     tl.to(brainRef.current, {
-      scale: 1.1,
-      duration: 2,
+      scale: 1.15,
+      rotationX: 5,
+      rotationY: 15,
+      rotationZ: 2,
+      duration: 3,
       ease: "power2.inOut",
-    }).to(
-      brainRef.current,
-      {
-        rotationY: 10,
-        duration: 1,
-        ease: "power2.inOut",
-      },
-      0
-    );
+      yoyo: true,
+      repeat: 1,
+    }).to(brainRef.current, {
+      rotationY: -10,
+      rotationX: -3,
+      duration: 2.5,
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: 1,
+    });
 
-    // Neurons firing animation
+    // Enhanced neurons firing animation with 3D effects
     neuronsRef.current.forEach((neuron, index) => {
       if (neuron) {
         gsap.to(neuron, {
-          scale: Math.random() * 0.5 + 0.8,
-          opacity: Math.random() * 0.5 + 0.5,
-          duration: Math.random() * 2 + 1,
+          scale: Math.random() * 0.7 + 0.9,
+          opacity: Math.random() * 0.6 + 0.4,
+          rotationZ: Math.random() * 360,
+          z: Math.random() * 20 - 10,
+          duration: Math.random() * 1.5 + 0.8,
           repeat: -1,
           yoyo: true,
-          delay: index * 0.1,
-          ease: "power2.inOut",
+          delay: index * 0.15,
+          ease: "elastic.inOut(1, 0.3)",
         });
       }
     });
 
-    // Thought bubbles floating animation
+    // Enhanced thought bubbles floating animation with 3D movement
     const thoughtBubbles = thoughtsRef.current.children;
     Array.from(thoughtBubbles).forEach((bubble, index) => {
       gsap.to(bubble, {
-        y: -20,
-        x: Math.sin(index) * 10,
-        duration: 3 + index * 0.5,
+        y: -25 + Math.sin(index * 2) * 10,
+        x: Math.sin(index) * 15,
+        z: Math.cos(index) * 8,
+        rotationX: Math.sin(index) * 5,
+        rotationY: Math.cos(index) * 8,
+        scale: 1.1 + Math.sin(index) * 0.1,
+        duration: 4 + index * 0.7,
         repeat: -1,
         yoyo: true,
-        ease: "power2.inOut",
-        delay: index * 0.3,
+        ease: "sine.inOut",
+        delay: index * 0.4,
       });
     });
 
@@ -71,7 +81,8 @@ const BrainConsciousnessAnimation: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className='relative w-full h-64 flex items-center justify-center perspective-1000'
+      className='relative w-full h-64 flex items-center justify-center'
+      style={{ perspective: "1200px", perspectiveOrigin: "center center" }}
     >
       {/* 3D Brain Structure */}
       <div
@@ -80,7 +91,10 @@ const BrainConsciousnessAnimation: React.FC = () => {
         style={{
           background: "linear-gradient(45deg, #ff6b9d, #c44569, #f8b500)",
           borderRadius: "50% 50% 50% 50% / 60% 60% 40% 40%",
-          boxShadow: "0 20px 40px rgba(196, 69, 105, 0.3)",
+          boxShadow:
+            "0 25px 50px rgba(196, 69, 105, 0.4), inset 0 5px 15px rgba(255, 255, 255, 0.3)",
+          filter: "drop-shadow(0 10px 20px rgba(196, 69, 105, 0.2))",
+          transformStyle: "preserve-3d",
         }}
       >
         {/* Brain Surface Details */}

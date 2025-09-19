@@ -148,7 +148,8 @@ const InterconnectionAnimation: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className='relative w-full h-80 flex items-center justify-center perspective-1000'
+      className='relative w-full h-80 flex items-center justify-center'
+      style={{ perspective: "1300px", perspectiveOrigin: "center center" }}
     >
       {/* Central Tree */}
       <div
