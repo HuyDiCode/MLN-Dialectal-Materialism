@@ -8,6 +8,11 @@ import WaterPhaseAnimation from "./animations/WaterPhaseAnimation";
 import TeamCompetitionAnimation from "./animations/TeamCompetitionAnimation";
 import SpiralDevelopmentAnimation from "./animations/SpiralDevelopmentAnimation";
 import DevelopmentAnimation from "./animations/DevelopmentAnimation";
+import GeneralParticularAnimation from "./animations/GeneralParticularAnimation";
+import CauseEffectAnimation from "./animations/CauseEffectAnimation";
+import NecessityChanceAnimation from "./animations/NecessityChanceAnimation";
+import ContentFormAnimation from "./animations/ContentFormAnimation";
+import EssencePhenomenonAnimation from "./animations/EssencePhenomenonAnimation";
 
 const TheorySection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -306,7 +311,10 @@ const TheorySection: React.FC = () => {
                 <h4 className='font-bold text-pink-800 mb-2'>
                   🔍 Cái chung - Cái riêng
                 </h4>
-                <p className='text-sm text-gray-700'>
+                <div className='bg-pink-50 rounded-lg p-2 mb-3 perspective-container shadow-3d transform-3d'>
+                  <GeneralParticularAnimation />
+                </div>
+                <p className='text-center text-xs text-pink-700 font-medium'>
                   Riêng: mỗi cây cụ thể | Chung: đều cần nước, ánh sáng
                 </p>
               </div>
@@ -315,7 +323,10 @@ const TheorySection: React.FC = () => {
                 <h4 className='font-bold text-blue-800 mb-2'>
                   ➡️ Nguyên nhân - Kết quả
                 </h4>
-                <p className='text-sm text-gray-700'>
+                <div className='bg-blue-50 rounded-lg p-2 mb-3 perspective-container shadow-3d transform-3d'>
+                  <CauseEffectAnimation />
+                </div>
+                <p className='text-center text-xs text-blue-700 font-medium'>
                   Học chăm → thi đỗ → tự tin → học tốt hơn
                 </p>
               </div>
@@ -324,7 +335,10 @@ const TheorySection: React.FC = () => {
                 <h4 className='font-bold text-green-800 mb-2'>
                   🎯 Tất nhiên - Ngẫu nhiên
                 </h4>
-                <p className='text-sm text-gray-700'>
+                <div className='bg-green-50 rounded-lg p-2 mb-3 perspective-container shadow-3d transform-3d'>
+                  <NecessityChanceAnimation />
+                </div>
+                <p className='text-center text-xs text-green-700 font-medium'>
                   Tất nhiên: mặt trời mọc | Ngẫu nhiên: gặp bạn cũ
                 </p>
               </div>
@@ -333,7 +347,10 @@ const TheorySection: React.FC = () => {
                 <h4 className='font-bold text-purple-800 mb-2'>
                   📝 Nội dung - Hình thức
                 </h4>
-                <p className='text-sm text-gray-700'>
+                <div className='bg-purple-50 rounded-lg p-2 mb-3 perspective-container shadow-3d transform-3d'>
+                  <ContentFormAnimation />
+                </div>
+                <p className='text-center text-xs text-purple-700 font-medium'>
                   Nội dung: thông điệp | Hình thức: cách trình bày
                 </p>
               </div>
@@ -342,7 +359,10 @@ const TheorySection: React.FC = () => {
                 <h4 className='font-bold text-orange-800 mb-2'>
                   💎 Bản chất - Hiện tượng
                 </h4>
-                <p className='text-sm text-gray-700'>
+                <div className='bg-orange-50 rounded-lg p-2 mb-3 perspective-container shadow-deep transform-3d'>
+                  <EssencePhenomenonAnimation />
+                </div>
+                <p className='text-center text-xs text-orange-700 font-medium'>
                   Bản chất: cốt lõi sâu xa | Hiện tượng: biểu hiện bên ngoài
                 </p>
               </div>
