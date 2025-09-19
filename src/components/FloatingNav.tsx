@@ -18,12 +18,24 @@ const FloatingNav: React.FC = () => {
       setIsVisible(scrollY > windowHeight * 0.3);
 
       // Detect active section
+      const theoryElement = document.getElementById("theory-section");
       const timelineElement = document.getElementById("timeline-section");
-      if (timelineElement) {
+      const quizElement = document.getElementById("quiz-section");
+
+      if (quizElement && timelineElement && theoryElement) {
+        const theoryTop = theoryElement.offsetTop;
         const timelineTop = timelineElement.offsetTop;
-        setActiveSection(
-          scrollY >= timelineTop - windowHeight * 0.5 ? "timeline" : "hero"
-        );
+        const quizTop = quizElement.offsetTop;
+
+        if (scrollY >= quizTop - windowHeight * 0.5) {
+          setActiveSection("quiz");
+        } else if (scrollY >= timelineTop - windowHeight * 0.5) {
+          setActiveSection("timeline");
+        } else if (scrollY >= theoryTop - windowHeight * 0.5) {
+          setActiveSection("theory");
+        } else {
+          setActiveSection("hero");
+        }
       }
     };
 
@@ -124,9 +136,16 @@ const FloatingNav: React.FC = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(
-      sectionId === "hero" ? "root" : "timeline-section"
-    );
+    let targetId = "root";
+    if (sectionId === "theory") {
+      targetId = "theory-section";
+    } else if (sectionId === "timeline") {
+      targetId = "timeline-section";
+    } else if (sectionId === "quiz") {
+      targetId = "quiz-section";
+    }
+
+    const element = document.getElementById(targetId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     } else if (sectionId === "hero") {
@@ -147,7 +166,7 @@ const FloatingNav: React.FC = () => {
           isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
         }`}
       >
-        <div className='flex flex-col space-y-6 p-4 bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 shadow-2xl'>
+        <div className='flex flex-col space-y-6 p-4 bg-white/20 backdrop-blur-lg rounded-2xl border border-white/30 shadow-2xl'>
           {/* Hero Section Button */}
           <button
             onClick={() => scrollToSection("hero")}
@@ -158,7 +177,7 @@ const FloatingNav: React.FC = () => {
               className={`w-4 h-4 rounded-full transition-all duration-500 transform group-hover:scale-150 ${
                 activeSection === "hero"
                   ? "bg-gradient-to-r from-purple-500 to-indigo-500 scale-125 shadow-lg shadow-purple-500/50"
-                  : "bg-white/60 group-hover:bg-white"
+                  : "bg-gray-600 group-hover:bg-gray-800"
               }`}
               style={{
                 boxShadow:
@@ -184,6 +203,42 @@ const FloatingNav: React.FC = () => {
             <div className='absolute inset-0 rounded-full bg-gradient-to-r from-purple-400/20 to-indigo-400/20 scale-0 group-hover:scale-300 transition-transform duration-500'></div>
           </button>
 
+          {/* Theory Section Button */}
+          <button
+            onClick={() => scrollToSection("theory")}
+            aria-label='Go to theory section'
+            className='group relative'
+          >
+            <div
+              className={`w-4 h-4 rounded-full transition-all duration-500 transform group-hover:scale-150 ${
+                activeSection === "theory"
+                  ? "bg-gradient-to-r from-indigo-500 to-purple-500 scale-125 shadow-lg shadow-indigo-500/50"
+                  : "bg-gray-600 group-hover:bg-gray-800"
+              }`}
+              style={{
+                boxShadow:
+                  activeSection === "theory"
+                    ? "0 0 20px rgba(99, 102, 241, 0.6)"
+                    : "none",
+              }}
+            >
+              {activeSection === "theory" && (
+                <div className='absolute inset-0 rounded-full bg-gradient-to-r from-indigo-400 to-purple-400 animate-ping'></div>
+              )}
+            </div>
+
+            {/* Enhanced tooltip */}
+            <div className='absolute right-8 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none'>
+              <div className='bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-xl whitespace-nowrap border border-white/20'>
+                <span>🧠 Lý thuyết</span>
+                <div className='absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-1 w-2 h-2 bg-indigo-600 rotate-45'></div>
+              </div>
+            </div>
+
+            {/* Magnetic effect indicator */}
+            <div className='absolute inset-0 rounded-full bg-gradient-to-r from-indigo-400/20 to-purple-400/20 scale-0 group-hover:scale-300 transition-transform duration-500'></div>
+          </button>
+
           {/* Timeline Section Button */}
           <button
             onClick={() => scrollToSection("timeline")}
@@ -194,7 +249,7 @@ const FloatingNav: React.FC = () => {
               className={`w-4 h-4 rounded-full transition-all duration-500 transform group-hover:scale-150 ${
                 activeSection === "timeline"
                   ? "bg-gradient-to-r from-blue-500 to-purple-500 scale-125 shadow-lg shadow-blue-500/50"
-                  : "bg-white/60 group-hover:bg-white"
+                  : "bg-gray-600 group-hover:bg-gray-800"
               }`}
               style={{
                 boxShadow:
@@ -220,15 +275,41 @@ const FloatingNav: React.FC = () => {
             <div className='absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/20 to-purple-400/20 scale-0 group-hover:scale-300 transition-transform duration-500'></div>
           </button>
 
-          {/* Progress indicator */}
-          <div className='w-1 bg-white/20 rounded-full h-16 mx-auto relative overflow-hidden'>
+          {/* Quiz Section Button */}
+          <button
+            onClick={() => scrollToSection("quiz")}
+            aria-label='Go to quiz section'
+            className='group relative'
+          >
             <div
-              className='absolute top-0 left-0 w-full bg-gradient-to-b from-purple-500 to-blue-500 rounded-full transition-all duration-300'
+              className={`w-4 h-4 rounded-full transition-all duration-500 transform group-hover:scale-150 ${
+                activeSection === "quiz"
+                  ? "bg-gradient-to-r from-green-500 to-blue-500 scale-125 shadow-lg shadow-green-500/50"
+                  : "bg-gray-600 group-hover:bg-gray-800"
+              }`}
               style={{
-                height: `${activeSection === "hero" ? "30%" : "100%"}`,
+                boxShadow:
+                  activeSection === "quiz"
+                    ? "0 0 20px rgba(34, 197, 94, 0.6)"
+                    : "none",
               }}
-            ></div>
-          </div>
+            >
+              {activeSection === "quiz" && (
+                <div className='absolute inset-0 rounded-full bg-gradient-to-r from-green-400 to-blue-400 animate-ping'></div>
+              )}
+            </div>
+
+            {/* Enhanced tooltip */}
+            <div className='absolute right-8 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none'>
+              <div className='bg-gradient-to-r from-green-600 to-blue-600 text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-xl whitespace-nowrap border border-white/20'>
+                <span>🧠 Quiz</span>
+                <div className='absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-1 w-2 h-2 bg-green-600 rotate-45'></div>
+              </div>
+            </div>
+
+            {/* Magnetic effect indicator */}
+            <div className='absolute inset-0 rounded-full bg-gradient-to-r from-green-400/20 to-blue-400/20 scale-0 group-hover:scale-300 transition-transform duration-500'></div>
+          </button>
         </div>
       </div>
 
@@ -237,7 +318,7 @@ const FloatingNav: React.FC = () => {
         ref={backToTopRef}
         onClick={scrollToTop}
         aria-label='Back to top'
-        className={`fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-br from-purple-500/20 to-indigo-500/20 backdrop-blur-lg border border-white/30 rounded-2xl flex items-center justify-center text-white hover:from-purple-500/30 hover:to-indigo-500/30 transition-all duration-500 z-50 shadow-2xl group ${
+        className={`fixed bottom-8 right-8 w-14 h-14 bg-white/20 backdrop-blur-lg border border-gray-300/50 rounded-2xl flex items-center justify-center text-gray-700 hover:bg-white/30 hover:text-gray-900 transition-all duration-500 z-50 shadow-2xl group ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
         style={{ willChange: "transform" }}
