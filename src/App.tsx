@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import LoadingScreen from "./components/LoadingScreen";
 import HeroSection from "./components/HeroSection";
+import TheorySection from "./components/TheorySection";
 import TimelineSection from "./components/TimelineSection";
+import QuizSection from "./components/quiz/QuizSection";
 import FloatingNav from "./components/FloatingNav";
 import { gsap } from "./hooks/useGSAP";
 
@@ -172,7 +174,9 @@ function App() {
         {/* Content with enhanced layering */}
         <div className='relative z-10'>
           <HeroSection />
+          <TheorySection />
           <TimelineSection />
+          <QuizSection />
           <FloatingNav />
         </div>
 
