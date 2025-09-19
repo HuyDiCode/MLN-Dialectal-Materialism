@@ -5,7 +5,7 @@ const NecessityChanceAnimation: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const sunRef = useRef<HTMLDivElement>(null);
   const friendRef = useRef<HTMLDivElement>(null);
-  const pathsRef = useRef<HTMLDivElement[]>([]);
+  const pathsRef = useRef<SVGPathElement[]>([]);
   const clockRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -99,7 +99,7 @@ const NecessityChanceAnimation: React.FC = () => {
     };
   }, []);
 
-  const addToPathsRef = (el: HTMLDivElement | null) => {
+  const addToPathsRef = (el: SVGPathElement | null) => {
     if (el && !pathsRef.current.includes(el)) {
       pathsRef.current.push(el);
     }

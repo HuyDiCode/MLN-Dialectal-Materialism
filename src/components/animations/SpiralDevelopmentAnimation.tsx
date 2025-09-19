@@ -5,7 +5,7 @@ const SpiralDevelopmentAnimation: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const spiralRef = useRef<HTMLDivElement>(null);
   const seedStagesRef = useRef<HTMLDivElement[]>([]);
-  const pathRef = useRef<HTMLDivElement>(null);
+  const pathRef = useRef<SVGPathElement>(null);
   const centerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

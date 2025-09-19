@@ -13,7 +13,7 @@ const TeamCompetitionAnimation: React.FC = () => {
     const masterTL = gsap.timeline({ repeat: -1, repeatDelay: 2 });
 
     // Initial positions - players scattered
-    playersRef.current.forEach((player, index) => {
+    playersRef.current.forEach((player) => {
       if (player) {
         gsap.set(player, {
           x: Math.random() * 200 - 100,

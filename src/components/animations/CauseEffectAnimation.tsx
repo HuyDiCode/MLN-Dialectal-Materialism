@@ -212,7 +212,7 @@ const CauseEffectAnimation: React.FC = () => {
       <div
         ref={addToArrowsRef}
         className='absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
-        style={{ opacity: 0, scaleX: 0 }}
+        style={{ opacity: 0, transform: "scaleX(0)" }}
       >
         <div className='w-24 h-1 bg-gradient-to-r from-blue-500 to-green-500 rounded-full relative'>
           <div className='absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 border-r-2 border-t-2 border-green-500 rotate-45' />
@@ -223,7 +223,7 @@ const CauseEffectAnimation: React.FC = () => {
       <div
         ref={addToArrowsRef}
         className='absolute right-1/4 top-1/2 transform translate-x-1/2 -translate-y-1/2 rotate-90'
-        style={{ opacity: 0, scaleX: 0 }}
+        style={{ opacity: 0, transform: "scaleX(0)" }}
       >
         <div className='w-24 h-1 bg-gradient-to-r from-green-500 to-purple-500 rounded-full relative'>
           <div className='absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 border-r-2 border-t-2 border-purple-500 rotate-45' />
@@ -234,7 +234,7 @@ const CauseEffectAnimation: React.FC = () => {
       <div
         ref={addToArrowsRef}
         className='absolute bottom-1/4 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-180'
-        style={{ opacity: 0, scaleX: 0 }}
+        style={{ opacity: 0, transform: "scaleX(0)" }}
       >
         <div className='w-24 h-1 bg-gradient-to-r from-purple-500 to-orange-500 rounded-full relative'>
           <div className='absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 border-r-2 border-t-2 border-orange-500 rotate-45' />
