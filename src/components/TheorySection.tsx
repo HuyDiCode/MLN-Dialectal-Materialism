@@ -1,5 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "../hooks/useGSAP";
+import BrainConsciousnessAnimation from "./animations/BrainConsciousnessAnimation";
+import SeedGrowthAnimation from "./animations/SeedGrowthAnimation";
+import InterconnectionAnimation from "./animations/InterconnectionAnimation";
+import WaterPhaseAnimation from "./animations/WaterPhaseAnimation";
+import TeamCompetitionAnimation from "./animations/TeamCompetitionAnimation";
+import SpiralDevelopmentAnimation from "./animations/SpiralDevelopmentAnimation";
 
 const TheorySection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -117,17 +123,18 @@ const TheorySection: React.FC = () => {
                   <span className='text-2xl mr-3'>🌍</span>
                   <h3 className='text-xl font-bold text-purple-800'>Duy vật</h3>
                 </div>
-                <p className='text-gray-700 leading-relaxed'>
+                <p className='text-gray-700 leading-relaxed mb-4'>
                   Thế giới được tạo ra từ{" "}
                   <span className='font-semibold text-purple-600'>
                     vật chất
                   </span>
                   . Vật chất sinh ra trước, ý thức được hình thành sau.
                 </p>
-                <div className='mt-3 p-3 bg-purple-50 rounded-lg'>
-                  <span className='text-sm text-purple-700'>
-                    💡 Ví dụ: Bộ não (vật chất) tạo ra suy nghĩ (ý thức)
-                  </span>
+                <div className='bg-purple-50 rounded-lg p-2 mb-3'>
+                  <BrainConsciousnessAnimation />
+                </div>
+                <div className='text-center text-sm text-purple-700 font-medium'>
+                  💡 Bộ não (vật chất) → Ý thức (suy nghĩ)
                 </div>
               </div>
 
@@ -138,18 +145,18 @@ const TheorySection: React.FC = () => {
                     Biện chứng
                   </h3>
                 </div>
-                <p className='text-gray-700 leading-relaxed'>
+                <p className='text-gray-700 leading-relaxed mb-4'>
                   Thế giới như một bức tranh{" "}
                   <span className='font-semibold text-blue-600'>
                     luôn chuyển động
                   </span>
                   , thay đổi và đầy mâu thuẫn.
                 </p>
-                <div className='mt-3 p-3 bg-blue-50 rounded-lg'>
-                  <span className='text-sm text-blue-700'>
-                    💡 Ví dụ: Hạt giống → nảy mầm → cây lớn (qua mâu thuẫn nội
-                    tại)
-                  </span>
+                <div className='bg-blue-50 rounded-lg p-2 mb-3'>
+                  <SeedGrowthAnimation />
+                </div>
+                <div className='text-center text-sm text-blue-700 font-medium'>
+                  💡 Hạt giống → Cây lớn (qua mâu thuẫn nội tại)
                 </div>
               </div>
             </div>
@@ -181,15 +188,16 @@ const TheorySection: React.FC = () => {
                     Liên hệ phổ biến
                   </h3>
                 </div>
-                <p className='text-gray-700 leading-relaxed mb-3'>
+                <p className='text-gray-700 leading-relaxed mb-4'>
                   Mọi sự vật đều{" "}
                   <span className='font-semibold text-blue-600'>liên kết</span>{" "}
                   với nhau, không có gì tồn tại cô lập.
                 </p>
-                <div className='p-3 bg-blue-50 rounded-lg'>
-                  <span className='text-sm text-blue-700'>
-                    💡 Cây cần nước, đất, ánh sáng. Thiếu một yếu tố → cây chết
-                  </span>
+                <div className='bg-blue-50 rounded-lg p-2 mb-3'>
+                  <InterconnectionAnimation />
+                </div>
+                <div className='text-center text-sm text-blue-700 font-medium'>
+                  💡 Cây cần nước, đất, ánh sáng. Thiếu một yếu tố → cây chết
                 </div>
               </div>
 
@@ -228,16 +236,17 @@ const TheorySection: React.FC = () => {
                     Lượng ↔ Chất
                   </h3>
                 </div>
-                <p className='text-gray-700 leading-relaxed mb-3'>
+                <p className='text-gray-700 leading-relaxed mb-4'>
                   Thay đổi{" "}
                   <span className='font-semibold text-orange-600'>lượng</span>{" "}
                   đến mức nhất định → thay đổi{" "}
                   <span className='font-semibold text-orange-600'>chất</span>
                 </p>
-                <div className='p-3 bg-orange-50 rounded-lg'>
-                  <span className='text-sm text-orange-700'>
-                    💡 Nước sôi 100°C → từ lỏng thành khí
-                  </span>
+                <div className='bg-orange-50 rounded-lg p-2 mb-3'>
+                  <WaterPhaseAnimation />
+                </div>
+                <div className='text-center text-sm text-orange-700 font-medium'>
+                  💡 Nước sôi 100°C → từ lỏng thành khí
                 </div>
               </div>
 
@@ -248,17 +257,18 @@ const TheorySection: React.FC = () => {
                     Thống nhất & Đấu tranh đối lập
                   </h3>
                 </div>
-                <p className='text-gray-700 leading-relaxed mb-3'>
+                <p className='text-gray-700 leading-relaxed mb-4'>
                   Mọi sự vật có{" "}
                   <span className='font-semibold text-red-600'>
                     mâu thuẫn bên trong
                   </span>
                   . Sự đấu tranh thúc đẩy phát triển.
                 </p>
-                <div className='p-3 bg-red-50 rounded-lg'>
-                  <span className='text-sm text-red-700'>
-                    💡 Đội bóng: cạnh tranh vị trí → chiến thuật tốt hơn
-                  </span>
+                <div className='bg-red-50 rounded-lg p-2 mb-3'>
+                  <TeamCompetitionAnimation />
+                </div>
+                <div className='text-center text-sm text-red-700 font-medium'>
+                  💡 Đội bóng: cạnh tranh vị trí → chiến thuật tốt hơn
                 </div>
               </div>
 
@@ -269,15 +279,16 @@ const TheorySection: React.FC = () => {
                     Phủ định của phủ định
                   </h3>
                 </div>
-                <p className='text-gray-700 leading-relaxed mb-3'>
+                <p className='text-gray-700 leading-relaxed mb-4'>
                   Phát triển theo{" "}
                   <span className='font-semibold text-purple-600'>xoắn ốc</span>
                   : loại bỏ cái cũ, giữ cái tích cực.
                 </p>
-                <div className='p-3 bg-purple-50 rounded-lg'>
-                  <span className='text-sm text-purple-700'>
-                    💡 Hạt giống → cây → quả có hạt mới (cao cấp hơn)
-                  </span>
+                <div className='bg-purple-50 rounded-lg p-2 mb-3'>
+                  <SpiralDevelopmentAnimation />
+                </div>
+                <div className='text-center text-sm text-purple-700 font-medium'>
+                  💡 Hạt giống → cây → quả có hạt mới (cao cấp hơn)
                 </div>
               </div>
             </div>
